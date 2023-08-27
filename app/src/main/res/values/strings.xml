@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Calculator</string>
+    <string name="two_under_rootx">2√¯x</string>
+    <string name="three_under_rootx">3√¯x</string>
+    <string name="y_under_rootx">y√¯x</string>
+    <string name="pi">\u03C0</string>
+
 </resources>
