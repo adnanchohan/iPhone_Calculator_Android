@@ -47,6 +47,7 @@
             android:layout_marginLeft="10dp">
 
             <Button
+                android:id="@+id/ac_btn"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
@@ -57,6 +58,7 @@
                 android:textColor="@color/black"
                 android:textSize="40sp" />
         <Button
+            android:id="@+id/plus_minus_btn"
             android:layout_margin="5dp"
             android:layout_width="0dp"
             android:layout_height="80dp"
@@ -66,6 +68,7 @@
             android:textSize="40sp"
             android:background="@drawable/round_btn_lightgrey"/>
         <Button
+            android:id="@+id/perctage_btn"
             android:layout_margin="5dp"
             android:layout_width="0dp"
             android:layout_height="80dp"
@@ -75,6 +78,7 @@
             android:textSize="40sp"
             android:background="@drawable/round_btn_lightgrey"/>
         <Button
+            android:id="@+id/divide_btn"
             android:layout_margin="5dp"
             android:layout_width="0dp"
             android:textColor="@color/white"
@@ -94,6 +98,7 @@
             android:layout_marginLeft="10dp">
 
             <Button
+                android:id="@+id/seven_btn"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
@@ -104,6 +109,7 @@
                 android:textColor="@color/white"
                 android:textSize="40sp" />
             <Button
+                android:id="@+id/eight_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -113,6 +119,7 @@
                 android:textSize="40sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/nine_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -122,6 +129,7 @@
                 android:textSize="40sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/multiply_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -143,6 +151,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp">
             <Button
+                android:id="@+id/four_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:textColor="@color/white"
@@ -152,6 +161,7 @@
                 android:textSize="40sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/five_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -161,6 +171,7 @@
                 android:textSize="40sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/six_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -170,6 +181,7 @@
                 android:textSize="40sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/minus_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -190,6 +202,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp">
             <Button
+                android:id="@+id/one_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -199,6 +212,7 @@
                 android:textSize="40sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/two_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -208,6 +222,7 @@
                 android:textSize="40sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/three_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -218,6 +233,7 @@
                 android:background="@drawable/round_btn"/>
 
             <Button
+                android:id="@+id/plus_btn"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_margin="5dp"
@@ -238,6 +254,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp">
             <Button
+                android:id="@+id/zero_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -250,6 +267,7 @@
                 android:background="@drawable/round_btn"/>
 
             <Button
+                android:id="@+id/decimal_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -259,6 +277,7 @@
                 android:textSize="40sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/equals_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"

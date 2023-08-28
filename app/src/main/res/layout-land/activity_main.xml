@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:weightSum="1.2">
                 <Button
+                    android:id="@+id/bracket_open_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -60,6 +61,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/bracket_close_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -69,6 +71,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/mc_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -79,6 +82,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/mplus_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -89,6 +93,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/m_minus_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -99,6 +104,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/mr_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:textColor="@color/white"
@@ -115,6 +121,7 @@
                 android:layout_height="wrap_content"
                 android:weightSum="1.2">
                 <Button
+                    android:id="@+id/second_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -125,6 +132,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/x_pwr_two_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -135,16 +143,18 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/x_pwr_three_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:textColor="@color/white"
                     android:textAllCaps="false"
                     android:layout_weight=".2"
-                    android:text="x^2"
+                    android:text="x^3"
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/x_pwr_y_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -155,6 +165,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/e_pwr_x_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -165,6 +176,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/ten_pwr_x_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:textColor="@color/white"
@@ -181,6 +193,7 @@
                 android:layout_height="wrap_content"
                 android:weightSum="1.2">
                 <Button
+                    android:id="@+id/one_div_x_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -191,6 +204,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/two_unroot_x_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -201,6 +215,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/three_unroot_x_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -211,6 +226,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/y_unroot_x_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -221,6 +237,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/ln_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -231,6 +248,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/log_ten_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:textColor="@color/white"
@@ -247,6 +265,7 @@
                 android:layout_height="wrap_content"
                 android:weightSum="1.2">
                 <Button
+                    android:id="@+id/factorial_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -257,6 +276,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/sin_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -267,6 +287,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/cos_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -277,6 +298,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/tan_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -287,6 +309,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/exponential_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -297,6 +320,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/double_e_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:textColor="@color/white"
@@ -312,6 +336,7 @@
                 android:layout_height="wrap_content"
                 android:weightSum="1.2">
                 <Button
+                    android:id="@+id/rad_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -322,6 +347,7 @@
                     android:textAllCaps="false"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/sinh_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -332,6 +358,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/cosh_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -342,6 +369,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/tanh_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -352,6 +380,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/pi_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -362,6 +391,7 @@
                     android:textSize="20sp"
                     android:background="@drawable/round_btn_darkgrey"/>
                 <Button
+                    android:id="@+id/rand_btn"
                     android:layout_margin="5dp"
                     android:layout_width="0dp"
                     android:textColor="@color/white"
@@ -386,6 +416,7 @@
             android:layout_height="wrap_content"
             android:weightSum="1">
         <Button
+            android:id="@+id/ac_btn"
             android:layout_margin="5dp"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -395,6 +426,7 @@
             android:textSize="20sp"
             android:background="@drawable/round_btn_lightgrey"/>
         <Button
+            android:id="@+id/plus_minus_btn"
             android:layout_margin="5dp"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -404,6 +436,7 @@
             android:textSize="20dp"
             android:background="@drawable/round_btn_lightgrey"/>
         <Button
+            android:id="@+id/perctage_btn"
             android:layout_margin="5dp"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -413,6 +446,7 @@
             android:textSize="20sp"
             android:background="@drawable/round_btn_lightgrey"/>
         <Button
+            android:id="@+id/divide_btn"
             android:layout_marginTop="7dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -432,6 +466,7 @@
             android:layout_height="wrap_content"
             android:weightSum="1">
             <Button
+                android:id="@+id/seven_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -441,6 +476,7 @@
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/eight_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -450,6 +486,7 @@
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/nine_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -459,6 +496,7 @@
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/multiply_btn"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
@@ -479,6 +517,7 @@
             android:layout_height="wrap_content"
             android:weightSum="1">
             <Button
+                android:id="@+id/four_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:textColor="@color/white"
@@ -488,6 +527,7 @@
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/five_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -497,6 +537,7 @@
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/six_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -506,6 +547,7 @@
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/minus_btn"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
@@ -526,6 +568,7 @@
             android:layout_height="wrap_content"
             android:weightSum="1">
             <Button
+                android:id="@+id/one_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -535,6 +578,7 @@
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/two_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -544,6 +588,7 @@
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/three_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -553,6 +598,7 @@
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/plus_btn"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
@@ -571,6 +617,7 @@
             android:layout_height="wrap_content"
             android:weightSum="1">
             <Button
+                android:id="@+id/zero_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -583,6 +630,7 @@
                 android:background="@drawable/round_btn"/>
 
             <Button
+                android:id="@+id/decimal_btn"
                 android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -592,6 +640,7 @@
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
             <Button
+                android:id="@+id/equals_btn"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
