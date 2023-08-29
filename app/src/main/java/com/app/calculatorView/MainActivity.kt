@@ -73,13 +73,13 @@ class MainActivity : AppCompatActivity() {
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             Log.d(TAG, "onCreate: Landscape")
             // In landscape
+            initializeSimpleView()
+            initializeScientificButtons()
         } else {
             Log.d(TAG, "onCreate: Portrait")
             // In portrait
+            initializeSimpleView()
         }
-
-
-        // Scientific Buttons
 
     }
 
