@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.app.calculatorView.MainActivity"
+    tools:context="com.app.calculator.View.MainActivity"
     android:background="@color/black">
 
     <LinearLayout
@@ -17,7 +17,7 @@
             android:id="@+id/main_display"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
             android:fontFamily="sans-serif-light"
@@ -84,6 +84,7 @@
             android:textColor="@color/white"
             android:layout_height="80dp"
             android:layout_weight=".25"
+            style=""
             android:text="÷"
             android:textSize="40sp"
             android:background="@drawable/round_btn_yellow"/>
