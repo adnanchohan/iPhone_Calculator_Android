@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +18,8 @@ import com.app.simplecalculator.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "MainActivityJava";
+    private View decorView;
+    private static final String TAG = "MainActivity";
     private Button zero_btn, one_btn,two_btn, three_btn,four_btn,five_btn,
             six_btn, seven_btn, eight_btn, nine_btn, plus_btn, minus_btn, multiply_btn,
             divide_btn, percentage_btn, plus_minus_btn, ac_btn, decimal_btn,equals_btn;
@@ -25,79 +27,129 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             xPwrY, ePwrX, tenPwrX, oneDivX, twoRootX, threeRootX, yRootx, ln, logTen, xFact, sin,
             cos, tan, exponential, doubleE, rad, sinh, cosh, tanh, pi, rand;
 
+    private TextView mDisplay;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mDisplay = findViewById(R.id.main_display);
+        InitializeSimpleViewButtons();
+        InitializeBtnListener();
+
+        decorView = getWindow().getDecorView();
+
         int Orientation = getResources().getConfiguration().orientation;
 
-        if(Orientation == Configuration.ORIENTATION_PORTRAIT){
-            Log.d(TAG, "onCreate: Portrait");
-
-            //Simple Buttons View
-            zero_btn = findViewById(R.id.zero_btn);
-            one_btn = findViewById(R.id.one_btn);
-            two_btn = findViewById(R.id.two_btn);
-            three_btn = findViewById(R.id.three_btn);
-            four_btn = findViewById(R.id.four_btn);
-            five_btn = findViewById(R.id.five_btn);
-            six_btn = findViewById(R.id.six_btn);
-            seven_btn = findViewById(R.id.seven_btn);
-            eight_btn = findViewById(R.id.eight_btn);
-            nine_btn = findViewById(R.id.nine_btn);
-            plus_btn = findViewById(R.id.plus_btn);
-            minus_btn = findViewById(R.id.minus_btn);
-            multiply_btn = findViewById(R.id.multiply_btn);
-            divide_btn = findViewById(R.id.divide_btn);
-            percentage_btn = findViewById(R.id.perctage_btn);
-            plus_minus_btn = findViewById(R.id.plus_minus_btn);
-            ac_btn = findViewById(R.id.ac_btn);
-            decimal_btn = findViewById(R.id.decimal_btn);
-            equals_btn = findViewById(R.id.equals_btn);
-
-            InitializeBtnListener();
-
-        } else {
+        if(Orientation == Configuration.ORIENTATION_LANDSCAPE){
             Log.d(TAG, "onCreate: Landscape");
-            //Scientific Buttons View
-            brack_open = findViewById(R.id.bracket_open_btn);
-            brack_close = findViewById(R.id.bracket_close_btn);
-            mc = findViewById(R.id.mc_btn);
-            mplus = findViewById(R.id.mplus_btn);
-            mminus = findViewById(R.id.m_minus_btn);
-            mr = findViewById(R.id.mr_btn);
-            second = findViewById(R.id.second_btn);
-            xPwrTwo = findViewById(R.id.x_pwr_two_btn);
-            xPwrThree = findViewById(R.id.x_pwr_three_btn);
-            xPwrY = findViewById(R.id.x_pwr_y_btn);
-            ePwrX = findViewById(R.id.e_pwr_x_btn);
-            tenPwrX = findViewById(R.id.ten_pwr_x_btn);
-            oneDivX = findViewById(R.id.one_div_x_btn);
-            twoRootX = findViewById(R.id.two_unroot_x_btn);
-            threeRootX = findViewById(R.id.three_unroot_x_btn);
-            yRootx = findViewById(R.id.y_unroot_x_btn);
-            ln = findViewById(R.id.ln_btn);
-            logTen = findViewById(R.id.log_ten_btn);
-            xFact = findViewById(R.id.factorial_btn);
-            sin = findViewById(R.id.sin_btn);
-            cos = findViewById(R.id.cos_btn);
-            tan = findViewById(R.id.tan_btn);
-            exponential = findViewById(R.id.exponential_btn);
-            doubleE = findViewById(R.id.double_e_btn);
-            rad = findViewById(R.id.rad_btn);
-            sinh = findViewById(R.id.sinh_btn);
-            cosh = findViewById(R.id.cosh_btn);
-            tanh = findViewById(R.id.tanh_btn);
-            pi = findViewById(R.id.pi_btn);
-            rand = findViewById(R.id.rand_btn);
-
+            InitializeScientificViewButtons();
             InitializeScientificBtnListeners();
+            decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+                @Override
+                public void onSystemUiVisibilityChange(int i) {
+                    if (i == 0){
+                        decorView.setSystemUiVisibility(hideSystemBarsWithNotificationsBar());
+                    }
+                }
+            });
+        } else {
+            decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+                @Override
+                public void onSystemUiVisibilityChange(int i) {
+                    if (i == 0){
+                        decorView.setSystemUiVisibility(hideSystemBars());
+                    }
+                }
+            });
         }
+
 
         CalculatorViewModel calculatorViewModel = new ViewModelProvider(this).get(CalculatorViewModel.class);
         
 
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus){
+            decorView.setSystemUiVisibility(hideSystemBars());
+        }
+    }
+
+    private int hideSystemBars(){
+        return View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+    }
+
+    private int hideSystemBarsWithNotificationsBar(){
+        return View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                View.SYSTEM_UI_FLAG_FULLSCREEN |
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+    }
+
+    private void InitializeScientificViewButtons(){
+        //Scientific Buttons View
+        brack_open = findViewById(R.id.bracket_open_btn);
+        brack_close = findViewById(R.id.bracket_close_btn);
+        mc = findViewById(R.id.mc_btn);
+        mplus = findViewById(R.id.mplus_btn);
+        mminus = findViewById(R.id.m_minus_btn);
+        mr = findViewById(R.id.mr_btn);
+        second = findViewById(R.id.second_btn);
+        xPwrTwo = findViewById(R.id.x_pwr_two_btn);
+        xPwrThree = findViewById(R.id.x_pwr_three_btn);
+        xPwrY = findViewById(R.id.x_pwr_y_btn);
+        ePwrX = findViewById(R.id.e_pwr_x_btn);
+        tenPwrX = findViewById(R.id.ten_pwr_x_btn);
+        oneDivX = findViewById(R.id.one_div_x_btn);
+        twoRootX = findViewById(R.id.two_unroot_x_btn);
+        threeRootX = findViewById(R.id.three_unroot_x_btn);
+        yRootx = findViewById(R.id.y_unroot_x_btn);
+        ln = findViewById(R.id.ln_btn);
+        logTen = findViewById(R.id.log_ten_btn);
+        xFact = findViewById(R.id.factorial_btn);
+        sin = findViewById(R.id.sin_btn);
+        cos = findViewById(R.id.cos_btn);
+        tan = findViewById(R.id.tan_btn);
+        exponential = findViewById(R.id.exponential_btn);
+        doubleE = findViewById(R.id.double_e_btn);
+        rad = findViewById(R.id.rad_btn);
+        sinh = findViewById(R.id.sinh_btn);
+        cosh = findViewById(R.id.cosh_btn);
+        tanh = findViewById(R.id.tanh_btn);
+        pi = findViewById(R.id.pi_btn);
+        rand = findViewById(R.id.rand_btn);
+    }
+
+    private void InitializeSimpleViewButtons(){
+        //Simple Buttons View
+        zero_btn = findViewById(R.id.zero_btn);
+        one_btn = findViewById(R.id.one_btn);
+        two_btn = findViewById(R.id.two_btn);
+        three_btn = findViewById(R.id.three_btn);
+        four_btn = findViewById(R.id.four_btn);
+        five_btn = findViewById(R.id.five_btn);
+        six_btn = findViewById(R.id.six_btn);
+        seven_btn = findViewById(R.id.seven_btn);
+        eight_btn = findViewById(R.id.eight_btn);
+        nine_btn = findViewById(R.id.nine_btn);
+        plus_btn = findViewById(R.id.plus_btn);
+        minus_btn = findViewById(R.id.minus_btn);
+        multiply_btn = findViewById(R.id.multiply_btn);
+        divide_btn = findViewById(R.id.divide_btn);
+        percentage_btn = findViewById(R.id.perctage_btn);
+        plus_minus_btn = findViewById(R.id.plus_minus_btn);
+        ac_btn = findViewById(R.id.ac_btn);
+        decimal_btn = findViewById(R.id.decimal_btn);
+        equals_btn = findViewById(R.id.equals_btn);
     }
 
     private void InitializeBtnListener(){
@@ -162,25 +214,83 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.zero_btn:
-
+                if(mDisplay.getText().toString().equals("0")){
+                    Log.d(TAG, "onClick: zero" + mDisplay.getText());
+                } else {
+                    mDisplay.append("0");
+                }
                 break;
             case R.id.one_btn:
+                ac_btn.setText("C");
+                if(mDisplay.getText().toString().equals("0")){
+                    mDisplay.setText("1");
+                } else {
+                    mDisplay.append("1");
+                }
                 break;
             case R.id.two_btn:
+                ac_btn.setText("C");
+                if(mDisplay.getText().toString().equals("0")){
+                    mDisplay.setText("2");
+                } else {
+                    mDisplay.append("2");
+                }
                 break;
             case R.id.three_btn:
+                ac_btn.setText("C");
+                if(mDisplay.getText().toString().equals("0")){
+                    mDisplay.setText("3");
+                } else {
+                    mDisplay.append("3");
+                }
                 break;
             case R.id.four_btn:
+                ac_btn.setText("C");
+                if(mDisplay.getText().toString().equals("0")){
+                    mDisplay.setText("4");
+                } else {
+                    mDisplay.append("4");
+                }
                 break;
             case R.id.five_btn:
+                ac_btn.setText("C");
+                if(mDisplay.getText().toString().equals("0")){
+                    mDisplay.setText("5");
+                } else {
+                    mDisplay.append("5");
+                }
                 break;
             case R.id.six_btn:
+                ac_btn.setText("C");
+                if(mDisplay.getText().toString().equals("0")){
+                    mDisplay.setText("6");
+                } else {
+                    mDisplay.append("6");
+                }
                 break;
             case R.id.seven_btn:
+                ac_btn.setText("C");
+                if(mDisplay.getText().toString().equals("0")){
+                    mDisplay.setText("7");
+                } else {
+                    mDisplay.append("7");
+                }
                 break;
             case R.id.eight_btn:
+                ac_btn.setText("C");
+                if(mDisplay.getText().toString().equals("0")){
+                    mDisplay.setText("8");
+                } else {
+                    mDisplay.append("8");
+                }
                 break;
             case R.id.nine_btn:
+                ac_btn.setText("C");
+                if(mDisplay.getText().toString().equals("0")){
+                    mDisplay.setText("9");
+                } else {
+                    mDisplay.append("9");
+                }
                 break;
             case R.id.plus_btn:
                 break;
@@ -191,6 +301,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.divide_btn:
                 break;
             case R.id.ac_btn:
+                ac_btn.setText("AC");
+                mDisplay.setText("0");
                 break;
             case R.id.perctage_btn:
                 break;
