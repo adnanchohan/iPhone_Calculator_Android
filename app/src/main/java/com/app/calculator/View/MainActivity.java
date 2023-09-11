@@ -28,6 +28,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             cos, tan, exponential, doubleE, rad, sinh, cosh, tanh, pi, rand;
 
     private TextView mDisplay;
+    private int a, b, result;
+    private boolean sign = false;
+    private boolean plus = false;
+    private boolean minus = false;
+    private boolean multiply = false;
+    private boolean divide = false;
+    private CalculatorViewModel calculatorViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-        CalculatorViewModel calculatorViewModel = new ViewModelProvider(this).get(CalculatorViewModel.class);
+        calculatorViewModel = new ViewModelProvider(this).get(CalculatorViewModel.class);
         
 
     }
@@ -93,6 +100,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
                 View.SYSTEM_UI_FLAG_FULLSCREEN |
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+    }
+
+    @Nullable
+    private String getResult(int a, int b, boolean pls, boolean mins, boolean divde, boolean multply){
+        if(pls){
+            result = calculatorViewModel.performAddition(a,b);
+            plus = false;
+            return String.valueOf(result);
+        } else if(mins){
+            result = calculatorViewModel.performSubtraction(a,b);
+            minus = false;
+            return String.valueOf(result);
+        } else if(divde){
+            result = calculatorViewModel.performDivision(a,b);
+            divide = false;
+            return String.valueOf(result);
+        } else if(multply){
+            result = calculatorViewModel.performMultiplication(a,b);
+            multiply = false;
+            return String.valueOf(result);
+        }
+
+        return null;
     }
 
     private void InitializeScientificViewButtons(){
@@ -224,6 +254,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("1");
+                } else if (sign) {
+                    mDisplay.setText("1");
+                    sign = false;
                 } else {
                     mDisplay.append("1");
                 }
@@ -232,6 +265,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("2");
+                } else if (sign) {
+                    mDisplay.setText("2");
+                    sign = false;
                 } else {
                     mDisplay.append("2");
                 }
@@ -240,6 +276,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("3");
+                } else if (sign) {
+                    mDisplay.setText("3");
+                    sign = false;
                 } else {
                     mDisplay.append("3");
                 }
@@ -248,6 +287,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("4");
+                } else if (sign) {
+                    mDisplay.setText("4");
+                    sign = false;
                 } else {
                     mDisplay.append("4");
                 }
@@ -256,6 +298,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("5");
+                } else if (sign) {
+                    mDisplay.setText("5");
+                    sign = false;
                 } else {
                     mDisplay.append("5");
                 }
@@ -264,6 +309,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("6");
+                } else if (sign) {
+                    mDisplay.setText("6");
+                    sign = false;
                 } else {
                     mDisplay.append("6");
                 }
@@ -272,6 +320,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("7");
+                } else if (sign) {
+                    mDisplay.setText("7");
+                    sign = false;
                 } else {
                     mDisplay.append("7");
                 }
@@ -280,6 +331,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("8");
+                } else if (sign) {
+                    mDisplay.setText("8");
+                    sign = false;
                 } else {
                     mDisplay.append("8");
                 }
@@ -288,17 +342,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("9");
+                } else if (sign) {
+                    mDisplay.setText("9");
+                    sign = false;
                 } else {
                     mDisplay.append("9");
                 }
                 break;
             case R.id.plus_btn:
+                a = Integer.parseInt(mDisplay.getText().toString());
+                plus = true;
+                sign = true;
                 break;
             case R.id.minus_btn:
+                a = Integer.parseInt(mDisplay.getText().toString());
+                minus = true;
+                sign = true;
                 break;
             case R.id.multiply_btn:
+                a = Integer.parseInt(mDisplay.getText().toString());
+                multiply = true;
+                sign = true;
                 break;
             case R.id.divide_btn:
+                a = Integer.parseInt(mDisplay.getText().toString());
+                divide = true;
+                sign = true;
                 break;
             case R.id.ac_btn:
                 ac_btn.setText("AC");
@@ -311,6 +380,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.decimal_btn:
                 break;
             case R.id.equals_btn:
+                b = Integer.parseInt(mDisplay.getText().toString());
+                Log.d(TAG, "onClick: Result: " + result);
+                mDisplay.setText(getResult(a,b,plus,minus,divide,multiply));
+                sign = true;
                 break;
             case R.id.bracket_close_btn:
                 break;
