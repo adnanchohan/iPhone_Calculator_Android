@@ -10,13 +10,15 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.app.calculator.ViewModel.CalculatorViewModel;
 import com.app.simplecalculator.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    // TODO: eg. 3 + 2 if again any sign btn pressed then add ab in a and spare b
+    //  so that multiple ops can be perform
 
     private View decorView;
     private static final String TAG = "MainActivity";
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView mDisplay;
     private int a, b, result;
-    private boolean sign = false;
+    private boolean signButtonPressed = false;
     private boolean plus = false;
     private boolean minus = false;
     private boolean multiply = false;
@@ -254,9 +256,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("1");
-                } else if (sign) {
+                } else if (signButtonPressed) {
                     mDisplay.setText("1");
-                    sign = false;
+                    signButtonPressed = false;
                 } else {
                     mDisplay.append("1");
                 }
@@ -265,9 +267,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("2");
-                } else if (sign) {
+                } else if (signButtonPressed) {
                     mDisplay.setText("2");
-                    sign = false;
+                    signButtonPressed = false;
                 } else {
                     mDisplay.append("2");
                 }
@@ -276,9 +278,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("3");
-                } else if (sign) {
+                } else if (signButtonPressed) {
                     mDisplay.setText("3");
-                    sign = false;
+                    signButtonPressed = false;
                 } else {
                     mDisplay.append("3");
                 }
@@ -287,9 +289,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("4");
-                } else if (sign) {
+                } else if (signButtonPressed) {
                     mDisplay.setText("4");
-                    sign = false;
+                    signButtonPressed = false;
                 } else {
                     mDisplay.append("4");
                 }
@@ -298,9 +300,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("5");
-                } else if (sign) {
+                } else if (signButtonPressed) {
                     mDisplay.setText("5");
-                    sign = false;
+                    signButtonPressed = false;
                 } else {
                     mDisplay.append("5");
                 }
@@ -309,9 +311,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("6");
-                } else if (sign) {
+                } else if (signButtonPressed) {
                     mDisplay.setText("6");
-                    sign = false;
+                    signButtonPressed = false;
                 } else {
                     mDisplay.append("6");
                 }
@@ -320,9 +322,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("7");
-                } else if (sign) {
+                } else if (signButtonPressed) {
                     mDisplay.setText("7");
-                    sign = false;
+                    signButtonPressed = false;
                 } else {
                     mDisplay.append("7");
                 }
@@ -331,9 +333,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("8");
-                } else if (sign) {
+                } else if (signButtonPressed) {
                     mDisplay.setText("8");
-                    sign = false;
+                    signButtonPressed = false;
                 } else {
                     mDisplay.append("8");
                 }
@@ -342,36 +344,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("9");
-                } else if (sign) {
+                } else if (signButtonPressed) {
                     mDisplay.setText("9");
-                    sign = false;
+                    signButtonPressed = false;
                 } else {
                     mDisplay.append("9");
                 }
                 break;
             case R.id.plus_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
+                Log.d(TAG, "onClick plus: a: " + a + " b: " + b);
                 plus = true;
-                sign = true;
+                signButtonPressed = true;
                 break;
             case R.id.minus_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
+                Log.d(TAG, "onClick minus: a: " + a + "b: " + b);
                 minus = true;
-                sign = true;
+                signButtonPressed = true;
                 break;
             case R.id.multiply_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
+                Log.d(TAG, "onClick: multiply: " + a + "b: " + b);
                 multiply = true;
-                sign = true;
+                signButtonPressed = true;
                 break;
             case R.id.divide_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
+                Log.d(TAG, "onClick divide: a: " + a + "b: " + b);
                 divide = true;
-                sign = true;
+                signButtonPressed = true;
                 break;
             case R.id.ac_btn:
                 ac_btn.setText("AC");
                 mDisplay.setText("0");
+                signButtonPressed = false;
                 break;
             case R.id.perctage_btn:
                 break;
@@ -381,9 +388,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.equals_btn:
                 b = Integer.parseInt(mDisplay.getText().toString());
-                Log.d(TAG, "onClick: Result: " + result);
+                Log.d(TAG, "onClick: a: " + a + "b: " + b);
                 mDisplay.setText(getResult(a,b,plus,minus,divide,multiply));
-                sign = true;
+                Log.d(TAG, "onClick: Result: " + result);
+                signButtonPressed = true;
                 break;
             case R.id.bracket_close_btn:
                 break;
