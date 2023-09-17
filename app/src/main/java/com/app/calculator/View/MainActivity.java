@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private View decorView;
     private static final String TAG = "MainActivity";
-    private ImageView plus_btn, minus_btn, multiply_btn, divide_btn, plus_minus_btn,equals_btn;
+    private ImageView plus_btn, minus_btn, multiply_btn, divide_btn, plus_minus_btn,equals_btn, percentage_btn;
     private Button zero_btn, one_btn,two_btn, three_btn,four_btn,five_btn,
-            six_btn, seven_btn, eight_btn, nine_btn, percentage_btn, ac_btn, decimal_btn;
+            six_btn, seven_btn, eight_btn, nine_btn, ac_btn, decimal_btn;
     private Button brack_open, brack_close, mc, mplus, mminus, mr, second, xPwrTwo, xPwrThree,
             xPwrY, ePwrX, tenPwrX, oneDivX, twoRootX, threeRootX, yRootx, ln, logTen, xFact, sin,
             cos, tan, exponential, doubleE, rad, sinh, cosh, tanh, pi, rand;

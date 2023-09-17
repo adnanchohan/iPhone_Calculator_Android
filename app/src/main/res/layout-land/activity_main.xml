@@ -426,39 +426,36 @@
             android:text="AC"
             android:textSize="20sp"
             android:background="@drawable/round_btn_lightgrey"/>
-        <Button
+        <ImageView
             android:id="@+id/plus_minus_btn"
             android:layout_margin="5dp"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:textColor="@color/black"
             android:layout_weight=".25"
-            android:text="+/-"
-            android:textSize="20dp"
+            android:padding="10dp"
+            android:src="@drawable/plus_minus_sign"
             android:background="@drawable/round_btn_lightgrey"/>
-        <Button
+        <ImageView
             android:id="@+id/perctage_btn"
             android:layout_margin="5dp"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:textColor="@color/black"
             android:layout_weight=".25"
-            android:text="%"
-            android:textSize="20sp"
+            android:padding="10dp"
+            android:src="@drawable/percentage"
             android:background="@drawable/round_btn_lightgrey"/>
-        <Button
+        <ImageView
             android:id="@+id/divide_btn"
             android:layout_marginTop="7dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="0dp"
             android:layout_width="0dp"
-            android:textColor="@color/white"
             android:layout_height="50dp"
             android:layout_weight=".25"
-            android:textStyle="bold"
-            android:text="÷"
-            android:textSize="25sp"
+            android:padding="16dp"
+            app:tint="@color/white"
+            android:src="@drawable/divide_sign"
             android:background="@drawable/round_btn_yellow"/>
         </LinearLayout>
         <LinearLayout
@@ -496,7 +493,7 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
-            <Button
+            <ImageView
                 android:id="@+id/multiply_btn"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="5dp"
@@ -505,11 +502,9 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight=".25"
-                android:textColor="@color/white"
-                android:textAllCaps="false"
-                android:text="×"
-                android:textStyle="bold"
-                android:textSize="25sp"
+                android:padding="14dp"
+                app:tint="@color/white"
+                android:src="@drawable/multiply_sign"
                 android:background="@drawable/round_btn_yellow"/>
         </LinearLayout>
         <LinearLayout
@@ -547,7 +542,7 @@
                 android:text="6"
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
-            <Button
+            <ImageView
                 android:id="@+id/minus_btn"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="5dp"
@@ -556,11 +551,9 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight=".25"
-                android:textScaleX=".8"
-                android:text="—"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:textSize="20sp"
+                android:padding="15dp"
+                app:tint="@color/white"
+                android:src="@drawable/minus_sign_land"
                 android:background="@drawable/round_btn_yellow"/>
         </LinearLayout>
         <LinearLayout
@@ -598,18 +591,18 @@
                 android:text="3"
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
-            <Button
+            <ImageView
                 android:id="@+id/plus_btn"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="0dp"
                 android:layout_width="0dp"
-                android:textColor="@color/white"
                 android:layout_height="50dp"
                 android:layout_weight=".25"
-                android:text="+"
-                android:textSize="25sp"
+                android:padding="16dp"
+                app:tint="@color/white"
+                android:src="@drawable/plus_sign"
                 android:background="@drawable/round_btn_yellow"/>
         </LinearLayout>
         <LinearLayout
@@ -640,7 +633,7 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:background="@drawable/round_btn"/>
-            <Button
+            <ImageView
                 android:id="@+id/equals_btn"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="5dp"
@@ -649,9 +642,9 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight=".25"
-                android:text="="
-                android:textSize="25sp"
-                android:textColor="@color/white"
+                android:padding="16dp"
+                app:tint="@color/white"
+                android:src="@drawable/equals_sign"
                 android:background="@drawable/round_btn_yellow"/>
             </LinearLayout>
         </LinearLayout>

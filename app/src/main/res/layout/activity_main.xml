@@ -63,20 +63,17 @@
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight=".25"
-            app:tint="@color/black"
-            android:textSize="40sp"
             android:padding="16dp"
-            android:src="@drawable/ic_plus_minus"
+            android:src="@drawable/plus_minus_sign"
             android:background="@drawable/round_btn_lightgrey"/>
-        <Button
+        <ImageView
             android:id="@+id/perctage_btn"
             android:layout_margin="5dp"
             android:layout_width="0dp"
             android:layout_height="80dp"
-            android:textColor="@color/black"
             android:layout_weight=".25"
-            android:text="%"
-            android:textSize="40sp"
+            android:padding="18dp"
+            android:src="@drawable/percentage"
             android:background="@drawable/round_btn_lightgrey"/>
         <ImageView
             android:id="@+id/divide_btn"
@@ -84,9 +81,9 @@
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight=".25"
-            android:padding="24dp"
+            android:padding="26dp"
             app:tint="@color/white"
-            android:src="@drawable/ic_divide"
+            android:src="@drawable/divide_sign"
             android:background="@drawable/round_btn_yellow"/>
         </LinearLayout>
         <LinearLayout
@@ -105,7 +102,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight=".25"
                 android:background="@drawable/round_btn"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="sans-serif"
                 android:text="7"
                 android:textColor="@color/white"
                 android:textSize="40sp" />
@@ -135,10 +132,9 @@
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight=".25"
-                android:textColor="@color/white"
                 android:padding="24dp"
-                app:tint="@color/white"
-                android:src="@drawable/ic_multiply"
+                app:tint="#ffffff"
+                android:src="@drawable/multiply_sign"
                 android:background="@drawable/round_btn_yellow"/>
         </LinearLayout>
         <LinearLayout
@@ -187,7 +183,7 @@
                 android:layout_weight=".25"
                 android:padding="24dp"
                 app:tint="@color/white"
-                android:src="@drawable/ic_minus"
+                android:src="@drawable/minus_sign"
                 android:background="@drawable/round_btn_yellow"/>
         </LinearLayout>
         <LinearLayout
@@ -238,7 +234,8 @@
                 android:background="@drawable/round_btn_yellow"
                 android:padding="23dp"
                 app:tint="@color/white"
-                android:src="@drawable/ic_plus" />
+                android:src="@drawable/plus_sign"
+                 />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/btn_line5"
@@ -248,18 +245,20 @@
             android:weightSum="1"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp">
+
             <Button
                 android:id="@+id/zero_btn"
-                android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
+                android:layout_margin="5dp"
                 android:layout_weight=".5"
-                android:text="0"
-                android:textColor="@color/white"
-                android:textSize="40sp"
+                android:background="@drawable/round_btn"
+                android:fontFamily="sans-serif"
                 android:paddingLeft="30dp"
+                android:text="0"
                 android:textAlignment="textStart"
-                android:background="@drawable/round_btn"/>
+                android:textColor="@color/white"
+                android:textSize="40sp" />
 
             <Button
                 android:id="@+id/decimal_btn"
@@ -279,7 +278,7 @@
                 android:layout_weight=".25"
                 android:padding="26dp"
                 app:tint="@color/white"
-                android:src="@drawable/ic_equals"
+                android:src="@drawable/equals_sign"
                 android:background="@drawable/round_btn_yellow"/>
         </LinearLayout>
     </LinearLayout>
