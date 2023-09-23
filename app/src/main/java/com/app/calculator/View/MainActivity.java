@@ -388,11 +388,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.decimal_btn:
                 break;
             case R.id.equals_btn:
-                b = Integer.parseInt(mDisplay.getText().toString());
-                Log.d(TAG, "onClick: a: " + a + "b: " + b);
-                mDisplay.setText(getResult(a,b,plus,minus,divide,multiply));
-                Log.d(TAG, "onClick: Result: " + result);
-                signButtonPressed = true;
+                Log.d(TAG, "onClick: equals " + mDisplay.getText());
+                if(!mDisplay.getText().equals("0")) {
+                    if(!mDisplay.getText().equals("Error")) {
+                        b = Integer.parseInt(mDisplay.getText().toString());
+                        Log.d(TAG, "onClick: a: " + a + "b: " + b);
+                        mDisplay.setText(getResult(a, b, plus, minus, divide, multiply));
+                        Log.d(TAG, "onClick: Result: " + result);
+                        signButtonPressed = true;
+                    }
+                } else if(divide && mDisplay.getText().equals("0")){
+                    mDisplay.setText("Error");
+                }
                 break;
             case R.id.bracket_close_btn:
                 break;
