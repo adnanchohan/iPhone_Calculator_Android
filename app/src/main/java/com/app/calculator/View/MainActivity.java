@@ -19,7 +19,7 @@ import com.app.simplecalculator.R;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // TODO: eg. 3 + 2 if again any sign btn pressed then add ab in a and spare b
-    //  so that multiple ops can be perform
+    //  so that multiple ops can be perform, add voice input calculation
 
     private View decorView;
     private static final String TAG = "MainActivity";
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             xPwrY, ePwrX, tenPwrX, oneDivX, twoRootX, threeRootX, yRootx, ln, logTen, xFact, sin,
             cos, tan, exponential, doubleE, rad, sinh, cosh, tanh, pi, rand;
 
-    private TextView mDisplay;
+    private TextView mDisplay, mCalculationView;
     private int a, b, result;
     private boolean signButtonPressed = false;
     private boolean plus = false;
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mDisplay = findViewById(R.id.main_display);
+        mCalculationView = findViewById(R.id.calculation_view);
         InitializeSimpleViewButtons();
         InitializeBtnListener();
 
@@ -251,105 +252,137 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.d(TAG, "onClick: zero" + mDisplay.getText());
                 } else {
                     mDisplay.append("0");
+                    if(mCalculationView.length()>=22){
+                        mCalculationView.setText("");
+                    } else {
+                        mCalculationView.append("0");
+                    }
                 }
                 break;
             case R.id.one_btn:
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("1");
+                    mCalculationView.append("1");
                 } else if (signButtonPressed) {
                     mDisplay.setText("1");
+                    mCalculationView.append("1");
                     signButtonPressed = false;
                 } else {
                     mDisplay.append("1");
+                    mCalculationView.append("1");
                 }
                 break;
             case R.id.two_btn:
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("2");
+                    mCalculationView.append("2");
                 } else if (signButtonPressed) {
                     mDisplay.setText("2");
+                    mCalculationView.append("2");
                     signButtonPressed = false;
                 } else {
                     mDisplay.append("2");
+                    mCalculationView.append("2");
                 }
                 break;
             case R.id.three_btn:
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("3");
+                    mCalculationView.append("3");
                 } else if (signButtonPressed) {
                     mDisplay.setText("3");
+                    mCalculationView.append("3");
                     signButtonPressed = false;
                 } else {
                     mDisplay.append("3");
+                    mCalculationView.append("3");
                 }
                 break;
             case R.id.four_btn:
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("4");
+                    mCalculationView.append("4");
                 } else if (signButtonPressed) {
                     mDisplay.setText("4");
+                    mCalculationView.append("4");
                     signButtonPressed = false;
                 } else {
                     mDisplay.append("4");
+                    mCalculationView.append("4");
                 }
                 break;
             case R.id.five_btn:
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("5");
+                    mCalculationView.append("5");
                 } else if (signButtonPressed) {
                     mDisplay.setText("5");
+                    mCalculationView.append("5");
                     signButtonPressed = false;
                 } else {
                     mDisplay.append("5");
+                    mCalculationView.append("5");
                 }
                 break;
             case R.id.six_btn:
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("6");
+                    mCalculationView.append("6");
                 } else if (signButtonPressed) {
                     mDisplay.setText("6");
+                    mCalculationView.append("6");
                     signButtonPressed = false;
                 } else {
                     mDisplay.append("6");
+                    mCalculationView.append("6");
                 }
                 break;
             case R.id.seven_btn:
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("7");
+                    mCalculationView.append("7");
                 } else if (signButtonPressed) {
                     mDisplay.setText("7");
+                    mCalculationView.append("7");
                     signButtonPressed = false;
                 } else {
                     mDisplay.append("7");
+                    mCalculationView.append("7");
                 }
                 break;
             case R.id.eight_btn:
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("8");
+                    mCalculationView.append("8");
                 } else if (signButtonPressed) {
                     mDisplay.setText("8");
+                    mCalculationView.append("8");
                     signButtonPressed = false;
                 } else {
                     mDisplay.append("8");
+                    mCalculationView.append("8");
                 }
                 break;
             case R.id.nine_btn:
                 ac_btn.setText("C");
                 if(mDisplay.getText().toString().equals("0")){
                     mDisplay.setText("9");
+                    mCalculationView.append("9");
                 } else if (signButtonPressed) {
                     mDisplay.setText("9");
+                    mCalculationView.append("9");
                     signButtonPressed = false;
                 } else {
                     mDisplay.append("9");
+                    mCalculationView.append("9");
                 }
                 break;
             case R.id.plus_btn:
@@ -357,28 +390,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d(TAG, "onClick plus: a: " + a + " b: " + b);
                 plus = true;
                 signButtonPressed = true;
+                mCalculationView.append("+");
                 break;
             case R.id.minus_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
                 Log.d(TAG, "onClick minus: a: " + a + "b: " + b);
                 minus = true;
                 signButtonPressed = true;
+                mCalculationView.append("-");
                 break;
             case R.id.multiply_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
                 Log.d(TAG, "onClick: multiply: " + a + "b: " + b);
                 multiply = true;
                 signButtonPressed = true;
+                mCalculationView.append("*");
                 break;
             case R.id.divide_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
                 Log.d(TAG, "onClick divide: a: " + a + "b: " + b);
                 divide = true;
                 signButtonPressed = true;
+                mCalculationView.append("÷");
                 break;
             case R.id.ac_btn:
                 ac_btn.setText("AC");
                 mDisplay.setText("0");
+                mCalculationView.setText("");
                 signButtonPressed = false;
                 break;
             case R.id.perctage_btn:
