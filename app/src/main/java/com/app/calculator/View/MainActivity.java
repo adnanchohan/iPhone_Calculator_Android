@@ -2,6 +2,8 @@ package com.app.calculator.View;
 
 import android.annotation.SuppressLint;
 import android.content.res.Configuration;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,7 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean multiply = false;
     private boolean divide = false;
     private CalculatorViewModel calculatorViewModel;
+    private Drawable backgroundDrawable_yellow, backgroundDrawable_white;
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         InitializeSimpleViewButtons();
         InitializeBtnListener();
 
+        backgroundDrawable_yellow = getResources().getDrawable(R.drawable.round_btn_yellow);
+        backgroundDrawable_white = getResources().getDrawable(R.drawable.round_btn_white);
         decorView = getWindow().getDecorView();
 
         int Orientation = getResources().getConfiguration().orientation;
@@ -391,6 +397,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 plus = true;
                 signButtonPressed = true;
                 mCalculationView.append("+");
+                setSignBackground(plus_btn,minus_btn,divide_btn,multiply_btn,false);
                 break;
             case R.id.minus_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
@@ -398,6 +405,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 minus = true;
                 signButtonPressed = true;
                 mCalculationView.append("-");
+                setSignBackground(minus_btn,divide_btn,multiply_btn,plus_btn,false);
                 break;
             case R.id.multiply_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
@@ -405,6 +413,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 multiply = true;
                 signButtonPressed = true;
                 mCalculationView.append("*");
+                setSignBackground(multiply_btn,minus_btn,divide_btn,plus_btn,false);
                 break;
             case R.id.divide_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
@@ -412,6 +421,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 divide = true;
                 signButtonPressed = true;
                 mCalculationView.append("÷");
+                setSignBackground(divide_btn,minus_btn,multiply_btn,plus_btn,false);
                 break;
             case R.id.ac_btn:
                 ac_btn.setText("AC");
@@ -426,6 +436,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.decimal_btn:
                 break;
             case R.id.equals_btn:
+                setSignBackground(plus_btn,minus_btn,multiply_btn,divide_btn,true);
                 Log.d(TAG, "onClick: equals " + mDisplay.getText());
                 if(!mDisplay.getText().equals("0")) {
                     if(!mDisplay.getText().equals("Error")) {
@@ -495,6 +506,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tanh_btn:
                 break;
+        }
+    }
+
+    /** input desired imageview in first parameter to change the background,
+     * set default to true to revert default background for all sign buttons**/
+    private void setSignBackground(ImageView on, ImageView off1, ImageView off2, ImageView off3, boolean setDefault){
+        if(!setDefault){
+            on.setBackground(backgroundDrawable_white);
+            on.setColorFilter(getResources().getColor(R.color.yellow), PorterDuff.Mode.SRC_IN);
+            off1.setBackground(backgroundDrawable_yellow);
+            off1.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
+            off2.setBackground(backgroundDrawable_yellow);
+            off2.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
+            off3.setBackground(backgroundDrawable_yellow);
+            off3.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
+        } else {
+            on.setBackground(backgroundDrawable_yellow);
+            on.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
+            off1.setBackground(backgroundDrawable_yellow);
+            off1.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
+            off2.setBackground(backgroundDrawable_yellow);
+            off2.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
+            off3.setBackground(backgroundDrawable_yellow);
+            off3.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
         }
     }
 }
