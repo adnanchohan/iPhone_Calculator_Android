@@ -118,16 +118,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             result = calculatorViewModel.performAddition(a,b);
             return String.valueOf(result);
         }
-//        else if(mins){
-//            result = calculatorViewModel.performSubtraction(a,b);
-//            return String.valueOf(result);
-//        } else if(divde){
-//            result = calculatorViewModel.performDivision(a,b);
-//            return String.valueOf(result);
-//        } else if(multply){
-//            result = calculatorViewModel.performMultiplication(a,b);
-//            return String.valueOf(result);
-//        }
+        else if(mins){
+            result = calculatorViewModel.performSubtraction(a,b);
+            return String.valueOf(result);
+        } else if(divde){
+            result = calculatorViewModel.performDivision(a,b);
+            return String.valueOf(result);
+        } else if(multply){
+            result = calculatorViewModel.performMultiplication(a,b);
+            return String.valueOf(result);
+        }
         return null;
     }
 
@@ -396,7 +396,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setSignBackground(plus_btn,minus_btn,divide_btn,multiply_btn,false);
                 break;
             case R.id.minus_btn:
-                a = Integer.parseInt(mDisplay.getText().toString());
+                a = Double.parseDouble(mDisplay.getText().toString());
                 Log.d(TAG, "onClick minus: a: " + a + "b: " + b);
                 setSignValues(false,true,false,false);
                 signButtonPressed = true;
@@ -404,7 +404,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setSignBackground(minus_btn,divide_btn,multiply_btn,plus_btn,false);
                 break;
             case R.id.multiply_btn:
-                a = Integer.parseInt(mDisplay.getText().toString());
+                a = Double.parseDouble(mDisplay.getText().toString());
                 Log.d(TAG, "onClick: multiply: " + a + "b: " + b);
                 setSignValues(false,false,false,true);
                 signButtonPressed = true;
@@ -412,7 +412,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setSignBackground(multiply_btn,minus_btn,divide_btn,plus_btn,false);
                 break;
             case R.id.divide_btn:
-                a = Integer.parseInt(mDisplay.getText().toString());
+                a = Double.parseDouble(mDisplay.getText().toString());
                 Log.d(TAG, "onClick divide: a: " + a + "b: " + b);
                 setSignValues(false,false,true,false);
                 signButtonPressed = true;
@@ -423,6 +423,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ac_btn.setText("AC");
                 mDisplay.setText("0");
                 mCalculationView.setText("");
+                setSignBackground(plus_btn,minus_btn,multiply_btn,divide_btn,true);
                 signButtonPressed = false;
                 break;
             case R.id.perctage_btn:
@@ -437,19 +438,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setSignBackground(plus_btn,minus_btn,multiply_btn,divide_btn,true);
                 Log.d(TAG, "on equals: pl: " +plus+ "mi: " +minus+ "di: " +divide+ "ml:" + multiply);
                 Log.d(TAG, "onClick: equals " + mDisplay.getText());
-                if(!mDisplay.getText().equals("0")) {
-                    if(!mDisplay.getText().equals("Error")) {
-                        b = Double.parseDouble(mDisplay.getText().toString());
-                        Log.d(TAG, "onClick: a: " + a + "b: " + b);
-                        mDisplay.setText(getResult(a, b, plus, minus, divide, multiply));
-                        Log.d(TAG, "onClick: Result: " + result);
-                        signButtonPressed = true;
+                if(plus || minus || multiply || divide) {
+                    if (!mDisplay.getText().equals("0")) {
+                        if (!mDisplay.getText().equals("Error")) {
+                            b = Double.parseDouble(mDisplay.getText().toString());
+                            Log.d(TAG, "onClick: a: " + a + "b: " + b);
+                            mDisplay.setText(getResult(a, b, plus, minus, divide, multiply));
+                            Log.d(TAG, "onClick: Result: " + result);
+                            signButtonPressed = true;
+                        }
+                    } else if (divide && mDisplay.getText().equals("0")) { // This is how Error occurs in official iphone calculator
+                        mDisplay.setText("Error");
                     }
-                } else if(divide && mDisplay.getText().equals("0")){ // This is how Error occurs in official iphone calculator
-                    mDisplay.setText("Error");
                 }
-                a = 0;
-                b = 0;
                 setSignValues(false,false,false,false);
                 break;
             case R.id.bracket_close_btn:

@@ -11,13 +11,13 @@ public class CalculatorViewModel extends ViewModel {
     public double performAddition(double a, double b){
         return calculatorLogic.addition(a,b);
     }
-    public int performSubtraction(int a, int b){
+    public double performSubtraction(double a, double b){
         return calculatorLogic.subtract(a,b);
     }
-    public int performDivision(int a, int b){
+    public double performDivision(double a, double b){
         return calculatorLogic.divide(a,b);
     }
-    public int performMultiplication(int a, int b){
+    public double performMultiplication(double a, double b){
         return calculatorLogic.multiply(a,b);
     }
 }
