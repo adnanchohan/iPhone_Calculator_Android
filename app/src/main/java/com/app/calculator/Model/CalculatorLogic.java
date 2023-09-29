@@ -2,7 +2,7 @@ package com.app.calculator.Model;
 
 public class CalculatorLogic {
 
-    public int addition (int a, int b){
+    public double addition (double a, double b){
         return a + b;
     }
     public int subtract (int a, int b){

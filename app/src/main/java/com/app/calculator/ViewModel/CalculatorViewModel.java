@@ -8,7 +8,7 @@ public class CalculatorViewModel extends ViewModel {
 
     private final CalculatorLogic calculatorLogic = new CalculatorLogic();
 
-    public int performAddition(int a, int b){
+    public double performAddition(double a, double b){
         return calculatorLogic.addition(a,b);
     }
     public int performSubtraction(int a, int b){

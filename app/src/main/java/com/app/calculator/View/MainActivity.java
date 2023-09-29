@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             cos, tan, exponential, doubleE, rad, sinh, cosh, tanh, pi, rand;
 
     private TextView mDisplay, mCalculationView;
-    private int a, b, result;
+    private double a, b, result;
     private boolean signButtonPressed = false;
     private boolean plus = false;
     private boolean minus = false;
@@ -113,25 +113,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Nullable
-    private String getResult(int a, int b, boolean pls, boolean mins, boolean divde, boolean multply){
+    private String getResult(double a, double b, boolean pls, boolean mins, boolean divde, boolean multply){
         if(pls){
             result = calculatorViewModel.performAddition(a,b);
-            plus = false;
-            return String.valueOf(result);
-        } else if(mins){
-            result = calculatorViewModel.performSubtraction(a,b);
-            minus = false;
-            return String.valueOf(result);
-        } else if(divde){
-            result = calculatorViewModel.performDivision(a,b);
-            divide = false;
-            return String.valueOf(result);
-        } else if(multply){
-            result = calculatorViewModel.performMultiplication(a,b);
-            multiply = false;
             return String.valueOf(result);
         }
-
+//        else if(mins){
+//            result = calculatorViewModel.performSubtraction(a,b);
+//            return String.valueOf(result);
+//        } else if(divde){
+//            result = calculatorViewModel.performDivision(a,b);
+//            return String.valueOf(result);
+//        } else if(multply){
+//            result = calculatorViewModel.performMultiplication(a,b);
+//            return String.valueOf(result);
+//        }
         return null;
     }
 
@@ -392,9 +388,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.plus_btn:
-                a = Integer.parseInt(mDisplay.getText().toString());
+                a = Double.parseDouble(mDisplay.getText().toString());
                 Log.d(TAG, "onClick plus: a: " + a + " b: " + b);
-                plus = true;
+                setSignValues(true,false,false,false);
                 signButtonPressed = true;
                 mCalculationView.append("+");
                 setSignBackground(plus_btn,minus_btn,divide_btn,multiply_btn,false);
@@ -402,7 +398,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.minus_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
                 Log.d(TAG, "onClick minus: a: " + a + "b: " + b);
-                minus = true;
+                setSignValues(false,true,false,false);
                 signButtonPressed = true;
                 mCalculationView.append("-");
                 setSignBackground(minus_btn,divide_btn,multiply_btn,plus_btn,false);
@@ -410,7 +406,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.multiply_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
                 Log.d(TAG, "onClick: multiply: " + a + "b: " + b);
-                multiply = true;
+                setSignValues(false,false,false,true);
                 signButtonPressed = true;
                 mCalculationView.append("*");
                 setSignBackground(multiply_btn,minus_btn,divide_btn,plus_btn,false);
@@ -418,7 +414,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.divide_btn:
                 a = Integer.parseInt(mDisplay.getText().toString());
                 Log.d(TAG, "onClick divide: a: " + a + "b: " + b);
-                divide = true;
+                setSignValues(false,false,true,false);
                 signButtonPressed = true;
                 mCalculationView.append("÷");
                 setSignBackground(divide_btn,minus_btn,multiply_btn,plus_btn,false);
@@ -434,21 +430,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.plus_minus_btn:
                 break;
             case R.id.decimal_btn:
+                mCalculationView.append(".");
+                mDisplay.append(".");
                 break;
             case R.id.equals_btn:
                 setSignBackground(plus_btn,minus_btn,multiply_btn,divide_btn,true);
+                Log.d(TAG, "on equals: pl: " +plus+ "mi: " +minus+ "di: " +divide+ "ml:" + multiply);
                 Log.d(TAG, "onClick: equals " + mDisplay.getText());
                 if(!mDisplay.getText().equals("0")) {
                     if(!mDisplay.getText().equals("Error")) {
-                        b = Integer.parseInt(mDisplay.getText().toString());
+                        b = Double.parseDouble(mDisplay.getText().toString());
                         Log.d(TAG, "onClick: a: " + a + "b: " + b);
                         mDisplay.setText(getResult(a, b, plus, minus, divide, multiply));
                         Log.d(TAG, "onClick: Result: " + result);
                         signButtonPressed = true;
                     }
-                } else if(divide && mDisplay.getText().equals("0")){
+                } else if(divide && mDisplay.getText().equals("0")){ // This is how Error occurs in official iphone calculator
                     mDisplay.setText("Error");
                 }
+                a = 0;
+                b = 0;
+                setSignValues(false,false,false,false);
                 break;
             case R.id.bracket_close_btn:
                 break;
@@ -507,6 +509,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tanh_btn:
                 break;
         }
+    }
+    /** pass in first parameter to make it true and pass others to make them false **/
+    private void setSignValues(boolean plus_sign, boolean minus_sign, boolean divide_sign, boolean multiply_sign){
+        Log.d(TAG, "setOtherSignFalse: called!");
+            plus = plus_sign;
+            minus = minus_sign;
+            divide = divide_sign;
+            multiply = multiply_sign;
     }
 
     /** input desired imageview in first parameter to change the background,
