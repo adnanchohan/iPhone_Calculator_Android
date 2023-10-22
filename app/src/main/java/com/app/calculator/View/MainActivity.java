@@ -18,6 +18,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.app.calculator.ViewModel.CalculatorViewModel;
 import com.app.simplecalculator.R;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // TODO: eg. 3 + 2 if again any sign btn pressed then add ab in a and spare b
@@ -114,19 +116,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Nullable
     private String getResult(double a, double b, boolean pls, boolean mins, boolean divde, boolean multply){
+        DecimalFormat decimalFormat = new DecimalFormat("#.###"); // Adjust the number of # symbols as needed
+
         if(pls){
             result = calculatorViewModel.performAddition(a,b);
-            return String.valueOf(result);
+            return decimalFormat.format(result);
         }
         else if(mins){
             result = calculatorViewModel.performSubtraction(a,b);
-            return String.valueOf(result);
+            return decimalFormat.format(result);
         } else if(divde){
             result = calculatorViewModel.performDivision(a,b);
-            return String.valueOf(result);
+            return decimalFormat.format(result);
         } else if(multply){
             result = calculatorViewModel.performMultiplication(a,b);
-            return String.valueOf(result);
+            return decimalFormat.format(result);
         }
         return null;
     }
@@ -520,7 +524,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             multiply = multiply_sign;
     }
 
-    /** input desired imageview in first parameter to change the background,
+    /**input desired imageview in first parameter to change the background,
      * set default to true to revert default background for all sign buttons**/
     private void setSignBackground(ImageView on, ImageView off1, ImageView off2, ImageView off3, boolean setDefault){
         if(!setDefault){
