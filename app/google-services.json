@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "461697207779",
+    "project_id": "iphone-calculator-104",
+    "storage_bucket": "iphone-calculator-104.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461697207779:android:33b905a698c0aab312a4d6",
+        "android_client_info": {
+          "package_name": "com.app.simplecalculator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSz8ZYLi9VdT5QhWl4GhK-k4soXxdagfo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
