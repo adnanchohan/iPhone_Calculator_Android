@@ -1,6 +1,7 @@
     package com.app.calculator.View;
 
 import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView mDisplay, mCalculationView;
     private double a, b, result;
+    private double percent=0;
     private boolean signButtonPressed = false;
     private boolean plus = false;
     private boolean minus = false;
@@ -46,12 +48,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean divide = false;
     private CalculatorViewModel calculatorViewModel;
     private Drawable backgroundDrawable_yellow, backgroundDrawable_white;
+    private final DecimalFormat decimalFormat = new DecimalFormat("#.###"); // Adjust the number of # symbols as needed
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(true){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
 
         FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
         FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
@@ -440,6 +447,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 signButtonPressed = false;
                 break;
             case R.id.perctage_btn:
+                mCalculationView.append("%");
+                b = Double.parseDouble(mDisplay.getText().toString());
+                Log.d(TAG, "percentage_btn: a: " + a + ": b: " + b);
+                percent = (b / 100.0f);
+                mDisplay.setText(decimalFormat.format(percent));
                 break;
             case R.id.plus_minus_btn:
                 break;
@@ -454,11 +466,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(plus || minus || multiply || divide) {
                     if (!mDisplay.getText().equals("0")) {
                         if (!mDisplay.getText().equals("Error")) {
-                            b = Double.parseDouble(mDisplay.getText().toString());
-                            Log.d(TAG, "onClick: a: " + a + "b: " + b);
-                            mDisplay.setText(getResult(a, b, plus, minus, divide, multiply));
-                            Log.d(TAG, "onClick: Result: " + result);
-                            signButtonPressed = true;
+                            if(percent != 0){
+                                calculatePercentage(percent);
+                            } else {
+                                b = Double.parseDouble(mDisplay.getText().toString());
+                                Log.d(TAG, "onClick: a: " + a + "b: " + b);
+                                mDisplay.setText(getResult(a, b, plus, minus, divide, multiply));
+                                Log.d(TAG, "onClick: Result: " + result);
+                                signButtonPressed = true;
+                            }
                         }
                     } else if (divide && mDisplay.getText().equals("0")) { // This is how Error occurs in official iphone calculator
                         mDisplay.setText("Error");
@@ -523,6 +539,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tanh_btn:
                 break;
         }
+    }
+
+    private void calculatePercentage(double perc){
+        if(plus){
+            Log.d(TAG, "calculatePercentage: plus");
+            percent = a * perc;
+            result = a + percent;
+            mDisplay.setText(decimalFormat.format(result));
+        }
+        else if (minus) {
+            Log.d(TAG, "calculatePercentage: minus");
+            percent = a * perc;
+            result = a - percent;
+            mDisplay.setText(decimalFormat.format(result));
+        }
+        else if (multiply) {
+            Log.d(TAG, "calculatePercentage: multiply");
+            result = a * perc;
+            mDisplay.setText(decimalFormat.format(result));
+        }
+        else if (divide) {
+            Log.d(TAG, "calculatePercentage: divide");
+            percent = a * perc;
+            result = a / percent;
+            mDisplay.setText(decimalFormat.format(result));
+        }
+        percent = 0;
     }
     /** pass in first parameter to make it true and pass others to make them false **/
     private void setSignValues(boolean plus_sign, boolean minus_sign, boolean divide_sign, boolean multiply_sign){
