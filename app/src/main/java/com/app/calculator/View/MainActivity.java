@@ -12,14 +12,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.app.calculator.ViewModel.CalculatorViewModel;
 import com.app.simplecalculator.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.remoteconfig.ConfigUpdate;
+import com.google.firebase.remoteconfig.ConfigUpdateListener;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigException;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
 import java.text.DecimalFormat;
@@ -56,15 +63,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(true){
+        initializeFirebaseRemoteConfig();
+
+        if(!getIsScientificValue()){
+            Log.d(TAG, "onCreate: isScientific is false");
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
-
-        FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
-        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
-                .setMinimumFetchIntervalInSeconds(3600)
-                .build();
-        mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
 
         mDisplay = findViewById(R.id.main_display);
         mCalculationView = findViewById(R.id.calculation_view);
@@ -104,6 +108,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         calculatorViewModel = new ViewModelProvider(this).get(CalculatorViewModel.class);
         
 
+    }
+
+    private void initializeFirebaseRemoteConfig() {
+        FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
+                .setMinimumFetchIntervalInSeconds(3600)
+                .build();
+        mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
+
+        mFirebaseRemoteConfig.setDefaultsAsync(R.xml.remote_config_defaults);
+
+        mFirebaseRemoteConfig.fetchAndActivate()
+                .addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Boolean> task) {
+                        if (task.isSuccessful()) {
+                            boolean updated = task.getResult();
+                            Log.d(TAG, "Config params updated: " + updated);
+
+                        } else {
+                            Log.d(TAG, "onComplete: fetch failed");
+                        }
+                    }
+                });
+
+        mFirebaseRemoteConfig.addOnConfigUpdateListener(new ConfigUpdateListener() {
+            @Override
+            public void onUpdate(ConfigUpdate configUpdate) {
+                Log.d(TAG, "Updated keys: " + configUpdate.getUpdatedKeys());
+
+                if (configUpdate.getUpdatedKeys().contains("isScientific")) {
+                    mFirebaseRemoteConfig.activate()
+                            .addOnCompleteListener(task -> getIsScientificValue());
+                }
+            }
+
+            @Override
+            public void onError(FirebaseRemoteConfigException error) {
+                Log.w(TAG, "Config update error with code: " + error.getCode(), error);
+            }
+        });
+
+    }
+
+    private boolean getIsScientificValue() {
+        FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        return mFirebaseRemoteConfig.getBoolean("isScientific");
     }
 
     @Override
