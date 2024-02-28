@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CalculatorViewModel calculatorViewModel;
     private Drawable backgroundDrawable_yellow, backgroundDrawable_white;
     private final DecimalFormat decimalFormat = new DecimalFormat("#.###"); // Adjust the number of # symbols as needed
+    private FirebaseRemoteConfig mFirebaseRemoteConfig;
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initializeFirebaseRemoteConfig() {
-        FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
         FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
                 .setMinimumFetchIntervalInSeconds(3600)
                 .build();
@@ -119,19 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mFirebaseRemoteConfig.setDefaultsAsync(R.xml.remote_config_defaults);
 
-        mFirebaseRemoteConfig.fetchAndActivate()
-                .addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Boolean> task) {
-                        if (task.isSuccessful()) {
-                            boolean updated = task.getResult();
-                            Log.d(TAG, "Config params updated: " + updated);
-
-                        } else {
-                            Log.d(TAG, "onComplete: fetch failed");
-                        }
-                    }
-                });
+        mFirebaseRemoteConfig.fetch();
 
         mFirebaseRemoteConfig.addOnConfigUpdateListener(new ConfigUpdateListener() {
             @Override
@@ -139,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d(TAG, "Updated keys: " + configUpdate.getUpdatedKeys());
 
                 if (configUpdate.getUpdatedKeys().contains("isScientific")) {
+                    Log.d(TAG, "onUpdate: isScientific is true!");
                     mFirebaseRemoteConfig.activate()
                             .addOnCompleteListener(task -> getIsScientificValue());
                 }
@@ -153,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private boolean getIsScientificValue() {
-        FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+//        FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
         return mFirebaseRemoteConfig.getBoolean("isScientific");
     }
 
