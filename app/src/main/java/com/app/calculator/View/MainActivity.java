@@ -144,6 +144,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean getIsScientificValue() {
 //        FirebaseRemoteConfig mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        if(mFirebaseRemoteConfig.getBoolean("isScientific")){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+        }
         return mFirebaseRemoteConfig.getBoolean("isScientific");
     }
 
