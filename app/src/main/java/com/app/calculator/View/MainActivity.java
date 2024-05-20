@@ -1,4 +1,4 @@
-    package com.app.calculator.View;
+package com.app.calculator.View;
 
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
@@ -316,7 +316,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.zero_btn:
                 if(mDisplay.getText().toString().equals("0")){
                     Log.d(TAG, "onClick: zero" + mDisplay.getText());
-                } else {
+                } else if (signButtonPressed && !mDisplay.getText().toString().equals("0")) {
+                    //Do not append "0"
+                }
+                else {
                     mDisplay.append("0");
                     if(mCalculationView.length()>=22){
                         mCalculationView.setText("");
