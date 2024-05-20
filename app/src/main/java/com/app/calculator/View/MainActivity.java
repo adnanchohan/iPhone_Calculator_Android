@@ -337,7 +337,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mDisplay.setText("1");
                     mCalculationView.append("1");
                     signButtonPressed = false;
-                } else {
+                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
+                    mDisplay.setText("-1");
+                    mCalculationView.append("-1");
+                }
+                else {
                     mDisplay.append("1");
                     mCalculationView.append("1");
                 }
@@ -351,7 +355,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mDisplay.setText("2");
                     mCalculationView.append("2");
                     signButtonPressed = false;
-                } else {
+                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
+                    mDisplay.setText("-2");
+                    mCalculationView.append("-2");
+                }
+                else {
                     mDisplay.append("2");
                     mCalculationView.append("2");
                 }
@@ -365,7 +373,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mDisplay.setText("3");
                     mCalculationView.append("3");
                     signButtonPressed = false;
-                } else {
+                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
+                    mDisplay.setText("-3");
+                    mCalculationView.append("-3");
+                }
+                else {
                     mDisplay.append("3");
                     mCalculationView.append("3");
                 }
@@ -379,7 +391,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mDisplay.setText("4");
                     mCalculationView.append("4");
                     signButtonPressed = false;
-                } else {
+                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
+                    mDisplay.setText("-4");
+                    mCalculationView.append("-4");
+                }
+                else {
                     mDisplay.append("4");
                     mCalculationView.append("4");
                 }
@@ -393,7 +409,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mDisplay.setText("5");
                     mCalculationView.append("5");
                     signButtonPressed = false;
-                } else {
+                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
+                    mDisplay.setText("-5");
+                    mCalculationView.append("-5");
+                }
+                else {
                     mDisplay.append("5");
                     mCalculationView.append("5");
                 }
@@ -407,7 +427,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mDisplay.setText("6");
                     mCalculationView.append("6");
                     signButtonPressed = false;
-                } else {
+                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
+                    mDisplay.setText("-6");
+                    mCalculationView.append("-6");
+                }
+                else {
                     mDisplay.append("6");
                     mCalculationView.append("6");
                 }
@@ -421,7 +445,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mDisplay.setText("7");
                     mCalculationView.append("7");
                     signButtonPressed = false;
-                } else {
+                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
+                    mDisplay.setText("-7");
+                    mCalculationView.append("-7");
+                }
+                else {
                     mDisplay.append("7");
                     mCalculationView.append("7");
                 }
@@ -435,7 +463,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mDisplay.setText("8");
                     mCalculationView.append("8");
                     signButtonPressed = false;
-                } else {
+                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
+                    mDisplay.setText("-8");
+                    mCalculationView.append("-8");
+                }
+                else {
                     mDisplay.append("8");
                     mCalculationView.append("8");
                 }
@@ -449,7 +481,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mDisplay.setText("9");
                     mCalculationView.append("9");
                     signButtonPressed = false;
-                } else {
+                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
+                    mDisplay.setText("-9");
+                    mCalculationView.append("-9");
+                }
+                else {
                     mDisplay.append("9");
                     mCalculationView.append("9");
                 }
@@ -501,6 +537,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mDisplay.setText(decimalFormat.format(percent));
                 break;
             case R.id.plus_minus_btn:
+                Log.d(TAG, "onClick: plus_minus_btn");
+                //if(mDisplay.getText().toString().contains("-")){
+                    String currentValue = mDisplay.getText().toString();
+                    //char lastCharacter = currentValue.charAt(currentValue.length() - 1);
+                    char lastCharacter = currentValue.charAt(0);
+                    Log.d(TAG, "onClick: " + lastCharacter);
+                    if (currentValue.charAt(0) == '-') {
+                        // Remove the first character
+                        currentValue = currentValue.substring(1);
+                    } else {
+                        // Add a minus sign at the beginning
+                        currentValue = "-" + currentValue;
+                    }
+
+                    // Update the TextView with the modified value
+                    mDisplay.setText(currentValue);
+                //}
                 break;
             case R.id.decimal_btn:
                 mCalculationView.append(".");
