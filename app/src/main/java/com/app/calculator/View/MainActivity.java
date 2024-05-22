@@ -309,9 +309,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rand.setOnClickListener(this);
     }
 
+    private void mainDisplayTextSizeListener(){
+        float currentTextSize;
+        currentTextSize = mDisplay.getTextSize();
+        Log.d(TAG, "mainDisplayTextSizeListener: currentTextSize: " + currentTextSize);
+    }
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
+        mainDisplayTextSizeListener();
         switch (view.getId()) {
             case R.id.zero_btn:
                 if(mDisplay.getText().toString().equals("0")){
@@ -537,12 +544,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mDisplay.setText(decimalFormat.format(percent));
                 break;
             case R.id.plus_minus_btn:
-                Log.d(TAG, "onClick: plus_minus_btn");
-                //if(mDisplay.getText().toString().contains("-")){
                     String currentValue = mDisplay.getText().toString();
                     //char lastCharacter = currentValue.charAt(currentValue.length() - 1);
                     char lastCharacter = currentValue.charAt(0);
-                    Log.d(TAG, "onClick: " + lastCharacter);
+                    //Log.d(TAG, "onClick: " + lastCharacter);
                     if (currentValue.charAt(0) == '-') {
                         // Remove the first character
                         currentValue = currentValue.substring(1);
@@ -553,7 +558,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     // Update the TextView with the modified value
                     mDisplay.setText(currentValue);
-                //}
                 break;
             case R.id.decimal_btn:
                 mCalculationView.append(".");
