@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -313,6 +314,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         float currentTextSize;
         currentTextSize = mDisplay.getTextSize();
         Log.d(TAG, "mainDisplayTextSizeListener: currentTextSize: " + currentTextSize);
+        if(mCalculationView.getText().toString().length() >= 5){
+            Log.d(TAG, "mainDisplayTextSizeListener: greater than 6! reducing the size");
+            currentTextSize = 65;
+            // TODO: Configure .setAutoTextSize()
+            mDisplay.setTextSize(currentTextSize);
+        }
+        //else if(mCalculationView.getText().toString().length() >= 6) {
+        //    currentTextSize = 70;
+        //    mDisplay.setTextSize(currentTextSize);
+        //}
+        else if(mCalculationView.getText().toString().length() < 6) {
+             currentTextSize = 100;
+             mDisplay.setTextSize(currentTextSize);
+        }
     }
 
     @SuppressLint("NonConstantResourceId")
