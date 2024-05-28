@@ -7,6 +7,8 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,7 +110,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         calculatorViewModel = new ViewModelProvider(this).get(CalculatorViewModel.class);
-        
 
     }
 
@@ -181,6 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(pls){
             result = calculatorViewModel.performAddition(a,b);
+            Log.d(TAG, "getResult: result: " + result);
             return decimalFormat.format(result);
         }
         else if(mins){
@@ -193,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             result = calculatorViewModel.performMultiplication(a,b);
             return decimalFormat.format(result);
         }
+
         return null;
     }
 
@@ -314,7 +317,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         float currentTextSize;
         currentTextSize = mDisplay.getTextSize();
         Log.d(TAG, "mainDisplayTextSizeListener: currentTextSize: " + currentTextSize);
-        if(mCalculationView.getText().toString().length() >= 5){
+        if(mCalculationView.getText().toString().length() >= 7){
             Log.d(TAG, "mainDisplayTextSizeListener: greater than 6! reducing the size");
             currentTextSize = 65;
             // TODO: Configure .setAutoTextSize()
@@ -327,16 +330,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if(mCalculationView.getText().toString().length() < 6) {
              currentTextSize = 100;
              mDisplay.setTextSize(currentTextSize);
+        } else {
+            Log.d(TAG, "mainDisplayTextSizeListener: else called!");
         }
+
+        Log.d(TAG, "mainDisplayTextSizeListener: oldValue: " + mDisplay.getText());
+
+        Utility utility =  new Utility();
+        String newValue =  utility.setCommasToDisplayView(mDisplay.getText().toString());
+        Log.d(TAG, "mainDisplayTextSizeListener: newValue: " + newValue);
+        mDisplay.setText(newValue);
     }
 
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        mainDisplayTextSizeListener();
+        String currentDisplayValue = mDisplay.getText().toString();
+        String cleanedValue = currentDisplayValue.replaceAll(",", "");
         switch (view.getId()) {
             case R.id.zero_btn:
-                if(mDisplay.getText().toString().equals("0")){
+                if(cleanedValue.equals("0")){
                     Log.d(TAG, "onClick: zero" + mDisplay.getText());
                 } else if (signButtonPressed && !mDisplay.getText().toString().equals("0")) {
                     //Do not append "0"
@@ -352,7 +365,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.one_btn:
                 ac_btn.setText("C");
-                if(mDisplay.getText().toString().equals("0")){
+                if(cleanedValue.equals("0")){
                     mDisplay.setText("1");
                     mCalculationView.append("1");
                 } else if (signButtonPressed) {
@@ -370,7 +383,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.two_btn:
                 ac_btn.setText("C");
-                if(mDisplay.getText().toString().equals("0")){
+                if(cleanedValue.equals("0")){
                     mDisplay.setText("2");
                     mCalculationView.append("2");
                 } else if (signButtonPressed) {
@@ -388,7 +401,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.three_btn:
                 ac_btn.setText("C");
-                if(mDisplay.getText().toString().equals("0")){
+                if(cleanedValue.equals("0")){
                     mDisplay.setText("3");
                     mCalculationView.append("3");
                 } else if (signButtonPressed) {
@@ -406,7 +419,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.four_btn:
                 ac_btn.setText("C");
-                if(mDisplay.getText().toString().equals("0")){
+                if(cleanedValue.equals("0")){
                     mDisplay.setText("4");
                     mCalculationView.append("4");
                 } else if (signButtonPressed) {
@@ -424,7 +437,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.five_btn:
                 ac_btn.setText("C");
-                if(mDisplay.getText().toString().equals("0")){
+                if(cleanedValue.equals("0")){
                     mDisplay.setText("5");
                     mCalculationView.append("5");
                 } else if (signButtonPressed) {
@@ -442,7 +455,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.six_btn:
                 ac_btn.setText("C");
-                if(mDisplay.getText().toString().equals("0")){
+                if(cleanedValue.equals("0")){
                     mDisplay.setText("6");
                     mCalculationView.append("6");
                 } else if (signButtonPressed) {
@@ -460,7 +473,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.seven_btn:
                 ac_btn.setText("C");
-                if(mDisplay.getText().toString().equals("0")){
+                if(cleanedValue.equals("0")){
                     mDisplay.setText("7");
                     mCalculationView.append("7");
                 } else if (signButtonPressed) {
@@ -478,7 +491,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.eight_btn:
                 ac_btn.setText("C");
-                if(mDisplay.getText().toString().equals("0")){
+                if(cleanedValue.equals("0")){
                     mDisplay.setText("8");
                     mCalculationView.append("8");
                 } else if (signButtonPressed) {
@@ -496,7 +509,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.nine_btn:
                 ac_btn.setText("C");
-                if(mDisplay.getText().toString().equals("0")){
+                if(cleanedValue.equals("0")){
                     mDisplay.setText("9");
                     mCalculationView.append("9");
                 } else if (signButtonPressed) {
@@ -513,7 +526,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.plus_btn:
-                a = Double.parseDouble(mDisplay.getText().toString());
+                a = Double.parseDouble(cleanedValue);
                 Log.d(TAG, "onClick plus: a: " + a + " b: " + b);
                 setSignValues(true,false,false,false);
                 signButtonPressed = true;
@@ -521,7 +534,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setSignBackground(plus_btn,minus_btn,divide_btn,multiply_btn,false);
                 break;
             case R.id.minus_btn:
-                a = Double.parseDouble(mDisplay.getText().toString());
+                a = Double.parseDouble(cleanedValue);
                 Log.d(TAG, "onClick minus: a: " + a + "b: " + b);
                 setSignValues(false,true,false,false);
                 signButtonPressed = true;
@@ -529,7 +542,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setSignBackground(minus_btn,divide_btn,multiply_btn,plus_btn,false);
                 break;
             case R.id.multiply_btn:
-                a = Double.parseDouble(mDisplay.getText().toString());
+                a = Double.parseDouble(cleanedValue);
                 Log.d(TAG, "onClick: multiply: " + a + "b: " + b);
                 setSignValues(false,false,false,true);
                 signButtonPressed = true;
@@ -537,7 +550,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setSignBackground(multiply_btn,minus_btn,divide_btn,plus_btn,false);
                 break;
             case R.id.divide_btn:
-                a = Double.parseDouble(mDisplay.getText().toString());
+                a = Double.parseDouble(cleanedValue);
                 Log.d(TAG, "onClick divide: a: " + a + "b: " + b);
                 setSignValues(false,false,true,false);
                 signButtonPressed = true;
@@ -588,7 +601,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             if(percent != 0){
                                 calculatePercentage(percent);
                             } else {
-                                b = Double.parseDouble(mDisplay.getText().toString());
+                                b = Double.parseDouble(cleanedValue);
                                 Log.d(TAG, "onClick: a: " + a + "b: " + b);
                                 mDisplay.setText(getResult(a, b, plus, minus, divide, multiply));
                                 Log.d(TAG, "onClick: Result: " + result);
@@ -658,6 +671,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tanh_btn:
                 break;
         }
+        mainDisplayTextSizeListener();
     }
 
     private void calculatePercentage(double perc){
