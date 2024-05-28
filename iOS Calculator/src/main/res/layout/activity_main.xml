@@ -64,14 +64,14 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="AC"
                 android:textColor="@color/black"
-                android:textSize="40sp" />
+                android:textSize="31dp" />
         <ImageView
             android:id="@+id/plus_minus_btn"
             android:layout_margin="5dp"
             android:layout_width="0dp"
             android:layout_height="85dp"
             android:layout_weight=".25"
-            android:padding="16dp"
+            android:padding="21dp"
             android:src="@drawable/plus_minus_sign"
             android:background="@drawable/round_btn_lightgrey"/>
         <ImageView
@@ -80,7 +80,7 @@
             android:layout_width="0dp"
             android:layout_height="85dp"
             android:layout_weight=".25"
-            android:padding="18dp"
+            android:padding="23dp"
             android:src="@drawable/percentage"
             android:background="@drawable/round_btn_lightgrey"/>
         <ImageView
@@ -89,7 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="85dp"
             android:layout_weight=".25"
-            android:padding="26dp"
+            android:padding="29dp"
             app:tint="@color/white"
             android:clickable="true"
             android:src="@drawable/divide_sign"
@@ -142,7 +142,7 @@
                 android:layout_width="0dp"
                 android:layout_height="85dp"
                 android:layout_weight=".25"
-                android:padding="24dp"
+                android:padding="27dp"
                 app:tint="#ffffff"
                 android:src="@drawable/multiply_sign"
                 android:background="@drawable/round_btn_yellow"/>
@@ -191,7 +191,7 @@
                 android:layout_width="0dp"
                 android:layout_height="85dp"
                 android:layout_weight=".25"
-                android:padding="24dp"
+                android:padding="27dp"
                 app:tint="@color/white"
                 android:src="@drawable/minus_sign"
                 android:background="@drawable/round_btn_yellow"/>
@@ -244,7 +244,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight=".25"
                 android:background="@drawable/round_btn_yellow"
-                android:padding="23dp"
+                android:padding="27dp"
                 app:tint="@color/white"
                 android:src="@drawable/plus_sign"
                  />
@@ -288,7 +288,7 @@
                 android:layout_width="0dp"
                 android:layout_height="85dp"
                 android:layout_weight=".25"
-                android:padding="26dp"
+                android:padding="29dp"
                 app:tint="@color/white"
                 android:src="@drawable/equals_sign"
                 android:background="@drawable/round_btn_yellow"/>
