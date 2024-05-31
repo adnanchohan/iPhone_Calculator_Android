@@ -58,4 +58,16 @@ public class Utility {
 
         return stringBuilder.toString();
     }
+
+    public int getNumericLength(TextView textView) {
+        // Get the text from the TextView
+        String text = textView.getText().toString();
+
+        // Remove all commas and periods
+        String cleanedText = text.replaceAll("[,.]", "");
+
+        // Calculate the length of the cleaned text
+
+        return cleanedText.length();
+    }
 }

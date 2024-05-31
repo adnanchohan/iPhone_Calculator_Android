@@ -28,11 +28,9 @@
             android:id="@+id/main_display"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:maxLines="1"
             android:maxLength="11"
-            android:paddingStart="20dp"
-            android:paddingEnd="35dp"
-            android:gravity="right"
+            android:gravity="end|bottom"
+            android:layout_marginEnd="40dp"
             android:text="0"
             android:textColor="@color/white"
             android:textSize="100dp"/>

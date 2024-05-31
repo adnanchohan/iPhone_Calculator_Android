@@ -314,20 +314,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void mainDisplayTextSizeListener(){
+        Utility utility =  new Utility();
         float currentTextSize;
         currentTextSize = mDisplay.getTextSize();
         Log.d(TAG, "mainDisplayTextSizeListener: currentTextSize: " + currentTextSize);
-        if(mCalculationView.getText().toString().length() >= 7){
+        int displayLength = utility.getNumericLength(mDisplay);
+        Log.d(TAG, "mainDisplayTextSizeListener: displayLength: " + displayLength);
+        if(displayLength == 7){
             Log.d(TAG, "mainDisplayTextSizeListener: greater than 6! reducing the size");
-            currentTextSize = 65;
-            // TODO: Configure .setAutoTextSize()
+            currentTextSize = 85;
+            // TODO: Configure .setAutoTextSize() for newer versions
             mDisplay.setTextSize(currentTextSize);
         }
-        //else if(mCalculationView.getText().toString().length() >= 6) {
-        //    currentTextSize = 70;
-        //    mDisplay.setTextSize(currentTextSize);
-        //}
-        else if(mCalculationView.getText().toString().length() < 6) {
+        else if(displayLength == 8) {
+            currentTextSize = 75;
+            mDisplay.setTextSize(currentTextSize);
+        }
+        else if(displayLength == 9) {
+            currentTextSize = 65;
+            mDisplay.setTextSize(currentTextSize);
+        }
+        else if(displayLength < 6) {
              currentTextSize = 100;
              mDisplay.setTextSize(currentTextSize);
         } else {
@@ -335,11 +342,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         Log.d(TAG, "mainDisplayTextSizeListener: oldValue: " + mDisplay.getText());
-
-        Utility utility =  new Utility();
         String newValue =  utility.setCommasToDisplayView(mDisplay.getText().toString());
         Log.d(TAG, "mainDisplayTextSizeListener: newValue: " + newValue);
         mDisplay.setText(newValue);
+        if(utility.getNumericLength(mDisplay) > 9){
+            Log.d(TAG, "mainDisplayTextSizeListener: delete last char in newValue");
+        }
     }
 
     @SuppressLint("NonConstantResourceId")
