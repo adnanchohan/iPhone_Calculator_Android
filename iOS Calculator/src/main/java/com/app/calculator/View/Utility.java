@@ -22,7 +22,13 @@ public class Utility {
             }
 
             // Reconstruct the formatted string
-            String formattedString = fractionalPart.isEmpty() ? integerPart : integerPart + "." + fractionalPart;
+            String formattedString;
+            if (fractionalPart.isEmpty() && s.contains(".")) {
+                // Preserve the decimal point if it was present in the original string
+                formattedString = integerPart + ".";
+            } else {
+                formattedString = fractionalPart.isEmpty() ? integerPart : integerPart + "." + fractionalPart;
+            }
 
             Log.d(TAG, "Formatted String: " + formattedString);
 
