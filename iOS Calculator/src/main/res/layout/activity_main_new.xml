@@ -59,6 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,8 +70,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -79,13 +78,13 @@
                 android:id="@+id/ac_btn"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
                 android:background="@drawable/round_btn_lightgrey"
                 android:fontFamily="sans-serif-medium"
                 android:text="AC"
                 android:textColor="@color/black"
                 android:textSize="31dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/plus_minus_btn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,12 +92,11 @@
                 android:id="@+id/plus_minus_btn"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="5dp"
                 android:background="@drawable/round_btn_lightgrey"
                 android:padding="21dp"
                 android:src="@drawable/plus_minus_sign"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/perctage_btn"
                 app:layout_constraintStart_toEndOf="@+id/ac_btn"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -106,12 +104,11 @@
                 android:id="@+id/perctage_btn"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="5dp"
                 android:background="@drawable/round_btn_lightgrey"
                 android:padding="23dp"
                 android:src="@drawable/percentage"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/divide_btn"
                 app:layout_constraintStart_toEndOf="@+id/plus_minus_btn"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -127,6 +124,8 @@
                 android:padding="29dp"
                 android:src="@drawable/divide_sign"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/perctage_btn"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/white" />
@@ -141,50 +140,50 @@
             android:layout_marginRight="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_line1"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/btn_line1">
 
             <Button
                 android:id="@+id/seven_btn"
-                android:layout_width="0dp"
+                android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
                 android:background="@drawable/round_btn"
                 android:fontFamily="sans-serif"
                 android:text="7"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/eight_btn"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/eight_btn"
-                android:layout_width="0dp"
+                android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
                 android:background="@drawable/round_btn"
                 android:text="8"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/nine_btn"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/seven_btn"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/nine_btn"
-                android:layout_width="0dp"
+                android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
                 android:background="@drawable/round_btn"
                 android:text="9"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/multiply_btn"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/eight_btn"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/multiply_btn"
@@ -194,11 +193,12 @@
                 android:background="@drawable/round_btn_yellow"
                 android:padding="27dp"
                 android:src="@drawable/multiply_sign"
-                app:tint="#ffffff"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/nine_btn"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+                app:tint="#ffffff" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -214,43 +214,43 @@
 
             <Button
                 android:id="@+id/four_btn"
-                android:layout_width="0dp"
+                android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
                 android:background="@drawable/round_btn"
                 android:text="4"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/five_btn"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/five_btn"
-                android:layout_width="0dp"
+                android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="5dp"
                 android:background="@drawable/round_btn"
                 android:text="5"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/six_btn"
                 app:layout_constraintStart_toEndOf="@+id/four_btn"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/six_btn"
-                android:layout_width="0dp"
+                android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
                 android:background="@drawable/round_btn"
                 android:text="6"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/minus_btn"
                 app:layout_constraintStart_toEndOf="@+id/five_btn"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/minus_btn"
@@ -262,6 +262,8 @@
                 android:padding="27dp"
                 android:src="@drawable/minus_sign"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/six_btn"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/white" />
@@ -280,45 +282,43 @@
 
             <Button
                 android:id="@+id/one_btn"
-                android:layout_width="0dp"
+                android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
                 android:background="@drawable/round_btn"
                 android:text="1"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/two_btn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/two_btn"
                 style="?android:borderlessButtonStyle"
-                android:layout_width="0dp"
+                android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
                 android:background="@drawable/round_btn"
                 android:text="2"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/three_btn"
                 app:layout_constraintStart_toEndOf="@+id/one_btn"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/three_btn"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
                 android:background="@drawable/round_btn"
                 android:text="3"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/plus_btn"
                 app:layout_constraintStart_toEndOf="@+id/two_btn"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/plus_btn"
@@ -328,11 +328,12 @@
                 android:background="@drawable/round_btn_yellow"
                 android:padding="27dp"
                 android:src="@drawable/plus_sign"
-                app:tint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/three_btn"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+                app:tint="@color/white" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -348,9 +349,8 @@
 
             <Button
                 android:id="@+id/zero_btn"
-                android:layout_width="190dp"
-                android:layout_height="80dp"
-                android:layout_margin="5dp"
+                android:layout_width="180dp"
+                android:layout_height="85dp"
                 android:background="@drawable/round_btn"
                 android:fontFamily="sans-serif"
                 android:paddingLeft="30dp"
@@ -359,6 +359,7 @@
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/decimal_btn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -366,12 +367,12 @@
                 android:id="@+id/decimal_btn"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:layout_margin="5dp"
                 android:background="@drawable/round_btn"
                 android:text="."
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/equals_btn"
                 app:layout_constraintStart_toEndOf="@+id/zero_btn"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -380,15 +381,14 @@
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_margin="5dp"
-                android:layout_weight=".25"
                 android:background="@drawable/round_btn_yellow"
                 android:padding="29dp"
                 android:src="@drawable/equals_sign"
-                app:tint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/decimal_btn"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+                app:tint="@color/white" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
