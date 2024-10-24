@@ -574,7 +574,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.perctage_btn:
                 mCalculationView.append("%");
-                b = Double.parseDouble(mDisplay.getText().toString());
+                b = Double.parseDouble(cleanedValue);
                 Log.d(TAG, "percentage_btn: a: " + a + ": b: " + b);
                 percent = (b / 100.0f);
                 mDisplay.setText(decimalFormat.format(percent));
