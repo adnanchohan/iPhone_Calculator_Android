@@ -5,27 +5,19 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.app.calculator.ViewModel.CalculatorViewModel;
 import com.app.simplecalculator.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.remoteconfig.ConfigUpdate;
 import com.google.firebase.remoteconfig.ConfigUpdateListener;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
@@ -342,9 +334,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         Log.d(TAG, "mainDisplayTextSizeListener: oldValue: " + mDisplay.getText());
-        String newValue =  utility.setCommasToDisplayView(mDisplay.getText().toString());
-        Log.d(TAG, "mainDisplayTextSizeListener: newValue: " + newValue);
-        mDisplay.setText(newValue);
+        if (!mDisplay.getText().toString().contains("Error")) {
+            String newValue = utility.setCommasToDisplayView(mDisplay.getText().toString());
+            Log.d(TAG, "mainDisplayTextSizeListener: newValue: " + newValue);
+            mDisplay.setText(newValue);
+        }
+
         if(utility.getNumericLength(mDisplay) > 9){
             Log.d(TAG, "mainDisplayTextSizeListener: delete last char in newValue");
         }
@@ -611,14 +606,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             } else {
                                 b = Double.parseDouble(cleanedValue);
                                 Log.d(TAG, "onClick: a: " + a + "b: " + b);
-                                mDisplay.setText(getResult(a, b, plus, minus, divide, multiply));
+                                String localResult = getResult(a, b, plus, minus, divide, multiply);
+                                if (localResult.equals("NaN")) {
+                                mDisplay.setText("Error");
+                                } else {
+                                    Log.d(TAG, "onClick: else statement called!");
+                                    mDisplay.setText(localResult);
+                                }
                                 Log.d(TAG, "onClick: Result: " + result);
                                 signButtonPressed = true;
                             }
                         }
-                    } else if (divide && mDisplay.getText().equals("0")) { // This is how Error occurs in official iphone calculator
-                        mDisplay.setText("Error");
                     }
+//                    else if (divide && mDisplay.getText().equals("NaN")) { // This is how Error occurs in official iphone calculator
+//                        mDisplay.setText("Error");
+//                    }
                 }
                 setSignValues(false,false,false,false);
                 break;
