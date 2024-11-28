@@ -168,7 +168,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
     }
 
-    @Nullable
     private String getResult(double a, double b, boolean pls, boolean mins, boolean divde, boolean multply){
         DecimalFormat decimalFormat = new DecimalFormat("#.###"); // Adjust the number of # symbols as needed
 
@@ -188,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return decimalFormat.format(result);
         }
 
-        return null;
+        return "0";
     }
 
     private void InitializeScientificViewButtons(){
@@ -367,198 +366,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.one_btn:
-                ac_btn.setText("C");
-                if(cleanedValue.equals("0")){
-                    mDisplay.setText("1");
-                    mCalculationView.append("1");
-                } else if (signButtonPressed) {
-                    mDisplay.setText("1");
-                    mCalculationView.append("1");
-                    signButtonPressed = false;
-                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
-                    mDisplay.setText("-1");
-                    mCalculationView.append("-1");
-                }
-                else {
-                    mDisplay.append("1");
-                    mCalculationView.append("1");
-                }
+                pressAndUpdateDisplay(cleanedValue, "1");
                 break;
             case R.id.two_btn:
-                ac_btn.setText("C");
-                if(cleanedValue.equals("0")){
-                    mDisplay.setText("2");
-                    mCalculationView.append("2");
-                } else if (signButtonPressed) {
-                    mDisplay.setText("2");
-                    mCalculationView.append("2");
-                    signButtonPressed = false;
-                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
-                    mDisplay.setText("-2");
-                    mCalculationView.append("-2");
-                }
-                else {
-                    mDisplay.append("2");
-                    mCalculationView.append("2");
-                }
+                pressAndUpdateDisplay(cleanedValue, "2");
                 break;
             case R.id.three_btn:
-                ac_btn.setText("C");
-                if(cleanedValue.equals("0")){
-                    mDisplay.setText("3");
-                    mCalculationView.append("3");
-                } else if (signButtonPressed) {
-                    mDisplay.setText("3");
-                    mCalculationView.append("3");
-                    signButtonPressed = false;
-                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
-                    mDisplay.setText("-3");
-                    mCalculationView.append("-3");
-                }
-                else {
-                    mDisplay.append("3");
-                    mCalculationView.append("3");
-                }
+                pressAndUpdateDisplay(cleanedValue, "3");
                 break;
             case R.id.four_btn:
-                ac_btn.setText("C");
-                if(cleanedValue.equals("0")){
-                    mDisplay.setText("4");
-                    mCalculationView.append("4");
-                } else if (signButtonPressed) {
-                    mDisplay.setText("4");
-                    mCalculationView.append("4");
-                    signButtonPressed = false;
-                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
-                    mDisplay.setText("-4");
-                    mCalculationView.append("-4");
-                }
-                else {
-                    mDisplay.append("4");
-                    mCalculationView.append("4");
-                }
+                pressAndUpdateDisplay(cleanedValue, "4");
                 break;
             case R.id.five_btn:
-                ac_btn.setText("C");
-                if(cleanedValue.equals("0")){
-                    mDisplay.setText("5");
-                    mCalculationView.append("5");
-                } else if (signButtonPressed) {
-                    mDisplay.setText("5");
-                    mCalculationView.append("5");
-                    signButtonPressed = false;
-                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
-                    mDisplay.setText("-5");
-                    mCalculationView.append("-5");
-                }
-                else {
-                    mDisplay.append("5");
-                    mCalculationView.append("5");
-                }
+                pressAndUpdateDisplay(cleanedValue, "5");
                 break;
             case R.id.six_btn:
-                ac_btn.setText("C");
-                if(cleanedValue.equals("0")){
-                    mDisplay.setText("6");
-                    mCalculationView.append("6");
-                } else if (signButtonPressed) {
-                    mDisplay.setText("6");
-                    mCalculationView.append("6");
-                    signButtonPressed = false;
-                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
-                    mDisplay.setText("-6");
-                    mCalculationView.append("-6");
-                }
-                else {
-                    mDisplay.append("6");
-                    mCalculationView.append("6");
-                }
+                pressAndUpdateDisplay(cleanedValue, "6");
                 break;
             case R.id.seven_btn:
-                ac_btn.setText("C");
-                if(cleanedValue.equals("0")){
-                    mDisplay.setText("7");
-                    mCalculationView.append("7");
-                } else if (signButtonPressed) {
-                    mDisplay.setText("7");
-                    mCalculationView.append("7");
-                    signButtonPressed = false;
-                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
-                    mDisplay.setText("-7");
-                    mCalculationView.append("-7");
-                }
-                else {
-                    mDisplay.append("7");
-                    mCalculationView.append("7");
-                }
+                pressAndUpdateDisplay(cleanedValue, "7");
                 break;
             case R.id.eight_btn:
-                ac_btn.setText("C");
-                if(cleanedValue.equals("0")){
-                    mDisplay.setText("8");
-                    mCalculationView.append("8");
-                } else if (signButtonPressed) {
-                    mDisplay.setText("8");
-                    mCalculationView.append("8");
-                    signButtonPressed = false;
-                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
-                    mDisplay.setText("-8");
-                    mCalculationView.append("-8");
-                }
-                else {
-                    mDisplay.append("8");
-                    mCalculationView.append("8");
-                }
+                pressAndUpdateDisplay(cleanedValue, "8");
                 break;
             case R.id.nine_btn:
-                ac_btn.setText("C");
-                if(cleanedValue.equals("0")){
-                    mDisplay.setText("9");
-                    mCalculationView.append("9");
-                } else if (signButtonPressed) {
-                    mDisplay.setText("9");
-                    mCalculationView.append("9");
-                    signButtonPressed = false;
-                } else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
-                    mDisplay.setText("-9");
-                    mCalculationView.append("-9");
-                }
-                else {
-                    mDisplay.append("9");
-                    mCalculationView.append("9");
-                }
+                pressAndUpdateDisplay(cleanedValue, "9");
                 break;
             case R.id.plus_btn:
-                a = Double.parseDouble(cleanedValue);
-                Log.d(TAG, "onClick plus: a: " + a + " b: " + b);
-                setSignValues(true,false,false,false);
-                signButtonPressed = true;
-                mCalculationView.append("+");
-                setSignBackground(plus_btn,minus_btn,divide_btn,multiply_btn,false);
+                pressSignAndCaptureValue(cleanedValue, "+");
                 break;
             case R.id.minus_btn:
-                a = Double.parseDouble(cleanedValue);
-                Log.d(TAG, "onClick minus: a: " + a + "b: " + b);
-                setSignValues(false,true,false,false);
-                signButtonPressed = true;
-                mCalculationView.append("-");
-                setSignBackground(minus_btn,divide_btn,multiply_btn,plus_btn,false);
+                pressSignAndCaptureValue(cleanedValue, "-");
                 break;
             case R.id.multiply_btn:
-                a = Double.parseDouble(cleanedValue);
-                Log.d(TAG, "onClick: multiply: " + a + "b: " + b);
-                setSignValues(false,false,false,true);
-                signButtonPressed = true;
-                mCalculationView.append("*");
-                setSignBackground(multiply_btn,minus_btn,divide_btn,plus_btn,false);
+                pressSignAndCaptureValue(cleanedValue, "x");
                 break;
             case R.id.divide_btn:
-                a = Double.parseDouble(cleanedValue);
-                Log.d(TAG, "onClick divide: a: " + a + "b: " + b);
-                setSignValues(false,false,true,false);
-                signButtonPressed = true;
-                mCalculationView.append("÷");
-                setSignBackground(divide_btn,minus_btn,multiply_btn,plus_btn,false);
+                pressSignAndCaptureValue(cleanedValue, "÷");
                 break;
             case R.id.ac_btn:
                 ac_btn.setText("AC");
@@ -595,34 +439,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mDisplay.append(".");
                 break;
             case R.id.equals_btn:
-                setSignBackground(plus_btn,minus_btn,multiply_btn,divide_btn,true);
-                Log.d(TAG, "on equals: pl: " +plus+ "mi: " +minus+ "di: " +divide+ "ml:" + multiply);
-                Log.d(TAG, "onClick: equals " + mDisplay.getText());
-                if(plus || minus || multiply || divide) {
-                    if (!mDisplay.getText().equals("0")) {
-                        if (!mDisplay.getText().equals("Error")) {
-                            if(percent != 0){
-                                calculatePercentage(percent);
-                            } else {
-                                b = Double.parseDouble(cleanedValue);
-                                Log.d(TAG, "onClick: a: " + a + "b: " + b);
-                                String localResult = getResult(a, b, plus, minus, divide, multiply);
-                                if (localResult.equals("NaN")) {
-                                mDisplay.setText("Error");
-                                } else {
-                                    Log.d(TAG, "onClick: else statement called!");
-                                    mDisplay.setText(localResult);
-                                }
-                                Log.d(TAG, "onClick: Result: " + result);
-                                signButtonPressed = true;
-                            }
-                        }
-                    }
-//                    else if (divide && mDisplay.getText().equals("NaN")) { // This is how Error occurs in official iphone calculator
-//                        mDisplay.setText("Error");
-//                    }
+                if (!mDisplay.getText().toString().equals("Error")) {
+                    getAndSetResults(a, Double.parseDouble(cleanedValue));
                 }
-                setSignValues(false,false,false,false);
                 break;
             case R.id.bracket_close_btn:
                 break;
@@ -684,6 +503,89 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainDisplayTextSizeListener();
     }
 
+    private void pressSignAndCaptureValue(String cleanedValue, String Sign) {
+        a = Double.parseDouble(cleanedValue);
+        Log.d(TAG, "a: " + a + " b: " + b);
+        switch (Sign){
+            case "+":
+                setSignValuesAndUpdateBackground(true,false,false,false, false);
+                break;
+            case "-":
+                setSignValuesAndUpdateBackground(false,true,false,false, false);
+                break;
+            case "x":
+                setSignValuesAndUpdateBackground(false,false,false,true, false);
+                break;
+            case "÷":
+                setSignValuesAndUpdateBackground(false,false,true,false, false);
+                break;
+            default:
+                setSignValuesAndUpdateBackground(false,false,false,false, false);
+
+        }
+
+        signButtonPressed = true;
+        mCalculationView.append(Sign);
+    }
+
+    private void getAndSetResults(double value_one, double value_two) {
+        setSignBackground(plus_btn, minus_btn, divide_btn, multiply_btn,true);
+        Log.d(TAG, "on equals: pl: " +plus+ "mi: " +minus+ "di: " +divide+ "ml:" + multiply);
+        Log.d(TAG, "onClick: equals " + mDisplay.getText());
+        if(plus || minus || multiply || divide) {
+            if (!mDisplay.getText().equals("0")) {
+                if (!mDisplay.getText().equals("Error")) {
+                    if(percent != 0){
+                        calculatePercentage(percent);
+                    } else {
+                        Log.d(TAG, "getAndSetResults: value_one: " + value_one);
+                        Log.d(TAG, "getAndSetResults: value_two: " + value_two);
+                        String localResult = getResult(value_one, value_two, plus, minus, divide, multiply);
+                        if (localResult.equals("NaN")) {
+                            mDisplay.setText("Error");
+                        } else {
+                            Log.d(TAG, "onClick: else statement called!");
+                            mDisplay.setText(localResult);
+                        }
+                        Log.d(TAG, "onClick: Result: " + result);
+                        signButtonPressed = true;
+                    }
+                }
+            }
+        }
+        setSignValuesAndUpdateBackground(false, false,false,
+                false, true);
+
+    }
+
+
+    @SuppressLint("SetTextI18n")
+    private void pressAndUpdateDisplay(String cleanedValue, String buttonName) {
+        ac_btn.setText("C");
+        if(cleanedValue.equals("0")){
+            mDisplay.setText(buttonName);
+            mCalculationView.append(buttonName);
+        }
+        else if (signButtonPressed) {
+            mDisplay.setText(buttonName);
+            mCalculationView.append(buttonName);
+            signButtonPressed = false;
+        }
+        else if (mDisplay.getText().toString().charAt(0) == '-' && !signButtonPressed) {
+            mDisplay.setText("-" + buttonName);
+            mCalculationView.append("-" + buttonName);
+        }
+        else if (signButtonPressed && !mDisplay.getText().toString().equals("0")) {
+        Log.d("NewCondition", " a: " + a);
+        double temp = Double.parseDouble(mDisplay.getText().toString());
+        getAndSetResults(a, temp);
+        }
+        else {
+            mDisplay.append(buttonName);
+            mCalculationView.append(buttonName);
+        }
+    }
+
     private void calculatePercentage(double perc){
         if(plus){
             Log.d(TAG, "calculatePercentage: plus");
@@ -711,12 +613,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         percent = 0;
     }
     /** pass in first parameter to make it true and pass others to make them false **/
-    private void setSignValues(boolean plus_sign, boolean minus_sign, boolean divide_sign, boolean multiply_sign){
+    private void setSignValuesAndUpdateBackground(boolean plus_sign,
+                                                  boolean minus_sign,
+                                                  boolean divide_sign,
+                                                  boolean multiply_sign,
+                                                  boolean defaultSign){
         Log.d(TAG, "setOtherSignFalse: called!");
-            plus = plus_sign;
-            minus = minus_sign;
-            divide = divide_sign;
-            multiply = multiply_sign;
+        if (plus_sign) {
+            plus = true;
+            setSignBackground(plus_btn, minus_btn, divide_btn, multiply_btn, defaultSign);
+        } else if (minus_sign) {
+            minus = true;
+            setSignBackground(minus_btn, plus_btn, divide_btn, multiply_btn,defaultSign);
+        } else if (multiply_sign) {
+            multiply = true;
+            setSignBackground(multiply_btn, minus_btn, divide_btn, plus_btn,defaultSign);
+        } else if (divide_sign) {
+            divide = true;
+            setSignBackground(divide_btn, minus_btn, plus_btn, multiply_btn, defaultSign);
+        }
     }
 
     /**input desired imageview in first parameter to change the background,
